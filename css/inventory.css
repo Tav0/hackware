@@ -1,0 +1,25 @@
+body {
+  background: #1C1D26;
+  color: white;
+  text-align: center;
+}
+
+tr{
+color:#e44c65;
+}
+p{
+color:#e44c65;
+}
+tr.element{
+color:#ffffff;
+} 
+
+tr.element:hover,p.link{
+color: #e44c65;
+}
+table{
+width:50%;
+margin-left:auto;
+margin-right:auto;
+}
+

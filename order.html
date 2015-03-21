@@ -1,0 +1,54 @@
+<html>
+
+
+<select id="item" >
+
+</select>
+
+<!-- dropdown for how many -->
+<select id="quantity">
+<option value="nothing">Select how many...</option>
+</select>
+
+
+
+
+<script src="https://www.parsecdn.com/js/parse-1.3.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+  Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");    
+
+var Hardware = Parse.Object.extend("HW");
+var query = new Parse.Query(Hardware);
+query.ascending("Name");
+query.find({
+  success: function(results) {
+    // Successfully retrieved the object.
+	
+	var select = document.getElementById('item');
+
+	// for loop
+	for(O in results){
+	var t = results[O].get('Name');
+	var opt = document.createElement('option');
+	opt.value=t;
+	opt.innerHTML=t;
+	select.appendChild(opt);
+	//$("item").append("<option>"+t+"</option>");
+}
+	
+	
+  },
+  error: function(error) {
+    alert("Error: " + error.code + " " + error.message);
+  }
+});
+
+  </script>
+
+
+
+
+
+</html>
