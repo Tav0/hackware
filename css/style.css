@@ -14,7 +14,7 @@ img#partner-logo {
 }
 
 div#faq-row {
-  margin: 90px 0px 100% -3.5em;
+  margin: 90px -70px 100% -3.5em;
 }
 
 div#who-row {
@@ -23,7 +23,7 @@ div#who-row {
 
 img#who-img {
       width: 30%;
-          margin: -47px 0px 0% 0em;
+          margin: -20px 0px 0% 0em;
         }
 
 /* Basic */
