@@ -12,6 +12,13 @@ img#partner-logo {
   width: 100%;
 }
 
+img#partner-logo-whitebg {
+  height: 100%;
+  width: 100%;
+  background-color: #FFF;
+  border-radius: 20px;
+}
+
 div#faq-row {
   margin: 90px -70px 100% -3.5em;
 }
