@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Popup Boxes</title>
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <script type="text/javascript">
+<!--
+function toggle_visibility(id) {
+  var e = document.getElementById(id);
+  if(e.style.display == 'block')
+    e.style.display = 'none';
+  else
+    e.style.display = 'block';
+}
+//-->
+    </script>
+
+    <style type="text/css">
+
+#popupBox{
+  top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+  background-color: rgba(0,0,0,0.7); display: none;
+}
+
+                        .popupBoxWrapper{
+                          width: 600px;
+                          margin: 50px auto;
+                          text-align: left;
+                        }
+
+                        .popupBoxContent{
+                          background-color: rgba(26,28,36,.8);
+                          padding: 15px;
+                          color: rgb(82,181,83);
+                          -moz-border-radius: 15px;
+                          -webkit-border-radius: 15px;
+                          border: 5px solid #009900;
+                          box-shadow: 0px 0px 100px rgba(0, 0, 0, .8);
+                        }
+
+                        .popuptext{
+                          color: aliceblue;
+                        }
+
+                        .btn-default{
+                          margin-top: 20px;
+                          margin-bottom: 20px;
+                          width: 60px;
+                          height: 30px;
+                          background-color: #fff;
+                          font-size: 10px;
+                        }
+
+                        .btn-default:hover{
+                          -webkit-transition: all .5s ease;
+                          -moz-transition: all .5s ease;
+                          -ms-transition: all .5s ease;
+                          -o-transition: all .5s ease;
+                          transition: all .5s ease;
+                          color: #000;
+                          background-color: rgb(100,181,100);
+                        }
+
+                        #pass{
+                          margin-top: 10px;
+                        }
+
+                        #x{
+                          color:rgb(231, 76, 60);
+                          float:right;
+                        }
+
+                        #x:hover{
+                          -webkit-transition: all .5s ease;
+                          -moz-transition: all .5s ease;
+                          -ms-transition: all .5s ease;
+                          -o-transition: all .5s ease;
+                          transition: all .5s ease;
+                          color: aliceblue;
+                        }
+
+                        a:hover{
+                          text-decoration: none;
+                          -webkit-transition: all .5s ease;
+                          -moz-transition: all .5s ease;
+                          -ms-transition: all .5s ease;
+                          -o-transition: all .5s ease;
+                          transition: all .5s ease;
+                          color: aliceblue;
+                        }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div id="popupBox">
+      <div class="popupBoxWrapper">
+        <div class="popupBoxContent">
+          <a href="javascript:void(0)" onclick="toggle_visibility('popupBox');"><i class="fa fa-times" id="x"></i></a>
+
+          <h3><center>Sign in!</center></h3>
+
+          <div class="popuptext">
+            <p>Email</p> <input type="email" class="form-control loginEmail" id="emailid" placeholder="Enter email">
+            <p id="pass">Password</p><input type="password" class="form-control loginEmail" id="emailid" placeholder="Enter password">
+          </div>
+
+          <button type="submit" class="btn btn-default">Submit</button>
+
+          <p>Didn't sign up yet? No problem! Make an account <a class="typeform-share link" href="https://hackware.typeform.com/to/CNOtal" data-mode="1" target="_blank">here</a>!</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="wrapper">
+
+      <p>Click <a href="javascript:void(0)" onclick="toggle_visibility('popupBox');">here</a> to see the popup.</p>
+    </div>
+
+  </body>
+
+</html>
