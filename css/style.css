@@ -28,8 +28,8 @@ div#who-row {
 }
 
 img#who-img {
-  width: 30%;
-  height: 20%;
+   width: 100%;
+   max-width: 400px;  /* fixes img rezising on mobile. MW limits desktop size */
 }
 /* Popup */
 #popupBox{
