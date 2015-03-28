@@ -20,11 +20,13 @@ img#partner-logo-whitebg {
 }
 
 div#faq-row {
-  margin: 3em;
+   margin: 4.5em 2em 100% 0em;
+   padding: 9px;
 }
 
 div#who-row {
-  margin: 2em;
+  margin: 2.5em 2em 100% 0em;
+  padding: 9px;
 }
 
 img#who-img {
