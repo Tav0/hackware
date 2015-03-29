@@ -75,13 +75,13 @@ div#who-row {
 img#who-img {
   width: 100%;
   max-width: 400px;  /* fixes img rezising on mobile. MW limits desktop size */
-  margin-bottom: 1.5em;
+  margin-bottom: 2.5em;
 }
 
 img#faq-img {
   max-width: 400px;
   width: 100%;
-  margin-bottom: 1.5em;
+  margin-bottom: 2.5em;
   margin-top: 1.5em;
 }
 
