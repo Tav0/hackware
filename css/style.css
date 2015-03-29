@@ -13,6 +13,18 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
   width: 70em;
 }
 
+p#input {
+  margin: 0 0 0.5em 30px;
+}
+
+#pass {
+  margin: 15px 0 0.5em 15px;
+}
+
+#button{
+  margin: 2em 0 1.5em 20px;
+}
+
 #about .content {
   display: inline-block;
   margin-right: 1%;
@@ -130,10 +142,6 @@ img#faq-img {
   transition: all .5s ease;
   color: #000;
   background-color: rgb(100,181,100);
-}
-
-#pass{
-  margin-top: 10px;
 }
 
 #x{
