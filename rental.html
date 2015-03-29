@@ -39,10 +39,10 @@ $(document).ready(function(){
 count++;
   });
 $("#btn2").click(function(){
-  parse.initialize("przcdqikspzjnuigtehj9jxkn6f1prfaixb2nk2r", "gud81fbe4prg1rdllmjvhldb8cba21imyrogrmrk");
+  Parse.initialize("przcdqikspzjnuigtehj9jxkn6f1prfaixb2nk2r", "gud81fbe4prg1rdllmjvhldb8cba21imyrogrmrk");
 
   //for every item rented, submit to parse.
-  var rental = parse.object.extend("rental");
+  var rental = Parse.object.extend("rental");
 var rental = new rental();
 
 rental.save({
