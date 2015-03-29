@@ -15,26 +15,25 @@ type="image/png"/>
 
 <body>
 <div id="container">
-  <h1>rental</h1>
+  <h1>Rental</h1>
   <form id="frm">
-    first name:<input type="text" id="firstname">
+    First Name :<input type="text" id="firstname">
     <br/>
-    last name:<input type="text" id="lastname">
+    Last Name :<input type="text" id="lastname">
     <br/>
-    phone number:<input type="text" id="phone">
+    Phone Number :<input type="text" id="phone">
     <br/>
-    item nr: <input type="text" id="item1" min="1" step="1">
+    Item # : <input type="text" id="item1" min="1" step="1">
   </form>
-  <button id="btn1" >one more item</button>
+  <button class="button" id="btn1" >one more item</button>
   <br/>
-  <button id="btn2">submit</button>
+  <button class="button" id="btn2">submit</button>
 
 <script>
 $(document).ready(function(){
-  var count = 2;
+  var count = 1;
   $("#btn1").click(function(){
     $("<br/>item nr: <input type='text' id='item$count' />")
-
    .attr("name", "myfieldid"+count)
    .appendto("#frm");
 count++;
@@ -67,7 +66,6 @@ rental.save({
 })
 
 });
-
 
 </script>
 
