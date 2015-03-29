@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="images/hackware_icon.png"
+type="image/png"/>
+<title>hackware hackathon rental</title>
+
+
+<script src="https://www.parsecdn.com/js/parse-1.3.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="css/inventory.css" />
+ <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+<div id="container">
+  <h1>rental</h1>
+  <form id="frm">
+    first name:<input type="text" id="firstname">
+    <br/>
+    last name:<input type="text" id="lastname">
+    <br/>
+    phone number:<input type="text" id="phone">
+    <br/>
+    item nr: <input type="text" id="item1" min="1" step="1">
+  </form>
+  <button id="btn1" >one more item</button>
+  <br/>
+  <button id="btn2">submit</button>
+
+<script>
+$(document).ready(function(){
+  var count = 2;
+  $("#btn1").click(function(){
+    $("<br/>item nr: <input type='text' id='item$count' />")
+
+   .attr("name", "myfieldid"+count)
+   .appendto("#frm");
+count++;
+  });
+$("#btn2").click(function(){
+  parse.initialize("przcdqikspzjnuigtehj9jxkn6f1prfaixb2nk2r", "gud81fbe4prg1rdllmjvhldb8cba21imyrogrmrk");
+
+  //for every item rented, submit to parse.
+  var rental = parse.object.extend("rental");
+var rental = new rental();
+
+rental.save({
+  firstname: document.getelementbyid('firstname').value,
+  lastname: document.getelementbyid('lastname').value,
+  phone: document.getelementbyid('phone').value,
+  item: document.getelementbyid('item1').value,
+  returned: false,
+}, {
+  success: function(gamescore) {
+    // the object was saved successfully.
+    console.log("successful save");
+  },
+  error: function(gamescore, error) {
+    // the save failed.
+    // error is a parse.error with an error code and message.
+    console.log("error. check parse");
+  }
+});
+
+})
+
+});
+
+
+</script>
+
+</body>
+
+</html>
