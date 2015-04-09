@@ -24,7 +24,7 @@ var count = 1;
 	var t = results[O].get('Name');
 	var r = results[O].get('Condition');
 	var p = results[O].get('rented');
-	if(results[O].get('rented')=="false"){
+	if(results[O].get('rented')){
 	p="no";
 	}
 	else{ p="yes";
