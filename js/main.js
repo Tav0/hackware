@@ -60,10 +60,10 @@ $(document).ready(function() {
 
     newUser.signUp(null, {
       success: function(newUser){
-        console.log("saved");
+        //console.log("saved");
       },
       error: function(newUser, err) {
-        console.log("Error: " + err.code + " " + err.message);
+        //console.log("Error: " + err.code + " " + err.message);
       }
     });
   }
