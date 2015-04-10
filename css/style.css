@@ -97,6 +97,12 @@ img#faq-img {
   margin-top: 1.5em;
 }
 
+/*hackru logo*/
+span.icon.alt.major.width {
+  width: 6em;
+  height: 7em;
+}
+
 
 /* Popup */
 #popupBox{
