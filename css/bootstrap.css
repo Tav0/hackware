@@ -4,7 +4,15 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+form.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  margin-top: 25vh;
+}
+
+*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -2542,7 +2550,7 @@ output {
   line-height: 1.42857143;
   color: #555;
 }
-.form-control {
+input.form-control {
   display: block;
   width: 100%;
   height: 34px;
@@ -3349,6 +3357,7 @@ fieldset[disabled] .btn-link:focus {
   font-size: 18px;
   line-height: 1.3333333;
   border-radius: 6px;
+  margin-top: 15px;
 }
 .btn-sm,
 .btn-group-sm > .btn {
