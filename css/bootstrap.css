@@ -9,6 +9,7 @@ form.form-signin {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
+  margin-top: 25vh;
 }
 
 *! normalize.css v3.0.2 | MIT License | git.io/normalize */
@@ -3356,6 +3357,7 @@ fieldset[disabled] .btn-link:focus {
   font-size: 18px;
   line-height: 1.3333333;
   border-radius: 6px;
+  margin-top: 15px;
 }
 .btn-sm,
 .btn-group-sm > .btn {
