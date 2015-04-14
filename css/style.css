@@ -499,10 +499,6 @@ footer.major {
 
 /* Form */
 
-form {
-  margin: 0 0 2em 0;
-}
-
 label {
   color: #ffffff;
   display: block;
@@ -536,7 +532,7 @@ textarea {
   text-decoration: none;
   width: 100%;
   margin: auto;
-  max-width: 50%;
+  /*max-width: 50%;*/
 }
 
 input[type="text"]:invalid,

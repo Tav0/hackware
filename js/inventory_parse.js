@@ -1,4 +1,4 @@
- Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");    
+Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");    
 
 var Hardware = Parse.Object.extend("Hardware");
 var query = new Parse.Query(Hardware);
