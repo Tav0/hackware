@@ -81,13 +81,11 @@
                 document.getElementById('inputPassword').value);
             newUser.set("email", document.getElementById('inputEmail').value);
 
+            window.location="https://hackware.io";
+
             newUser.signUp(null, { 
               success: function(newUser){
                 console.log("saved");
-                $(document).ready(function(){
-                  var url = "https://hackware.io";
-                  $(location).attr('href', url);
-                });
               },
               error: function(newUser,  err){
                 console.log("error: " + err.code + " " + err.message);
