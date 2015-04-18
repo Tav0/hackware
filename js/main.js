@@ -22,9 +22,12 @@ $(document).ready(function() {
     var newUser = new User();
     var entryN = user.responses.length - 1 ;
     
-    newUser.set("username", user.responses[entryN].answers.email_4415264);
-    newUser.set("password", user.responses[entryN].answers.textfield_4607199);
-    newUser.set("email", user.responses[entryN].answers.email_4415264);
+    //newUser.set("username", user.responses[entryN].answers.email_4415264);
+    //newUser.set("password", user.responses[entryN].answers.textfield_4607199);
+    //newUser.set("email", user.responses[entryN].answers.email_4415264);
+
+    //Look for the last user in parse's DB and add below inputs in it.
+
     newUser.set("first", user.responses[entryN].answers.textfield_4415133);
     newUser.set("last", user.responses[entryN].answers.textfield_4415230);
     newUser.set("boxApt", user.responses[entryN].answers.textfield_5335803);
