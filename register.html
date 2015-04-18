@@ -68,6 +68,7 @@
         target="_blank">Next</button>
       <script src="js/type_form.js"></script>
       <script type="text/javascript">
+        console.log("save");
         $(document).ready(function(){
           $("btnSubmit").click(function(){
             Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r",
@@ -81,8 +82,6 @@
             newUser.set("password",
                 document.getElementById('inputPassword').value);
             newUser.set("email", document.getElementById('inputEmail').value);
-
-            window.location="https://hackware.io";
 
             newUser.signUp(null, { 
               success: function(newUser){
