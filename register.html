@@ -2,6 +2,39 @@
 <html>
   <head>
     <title>HackWare: Registration</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Bringing hardware to people at a 
+    fraction of the price." />
+    <meta name="keywords" content="hardware, rent, hack, create, develop, 
+    hackers, hackware, rent hardware, hackathons" />
+    <link rel="shortcut icon" href="images/hackware_icon.png"
+                              type="image/png"/>
+    <link rel="apple-touch-icon" href="images/hackware_icon.png"
+                                 type="image/png"/>
+
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+      <script src="js/jquery-2.1.3.min.js"></script>
+      <script src="js/jquery.scrolly.min.js"></script>
+      <script src="js/jquery.dropotron.min.js"></script>
+      <script src="js/jquery.scrollex.min.js"></script>
+      <script src="js/skel.min.js"></script>
+      <script src="js/skel-layers.min.js"></script>   
+      <script type="text/javascript">
+        function checkPasswordMatch(){
+          var pass = $("#inputPassword").val();
+          var confirmPass = $("#reInputPassword").val();
+
+          (pass != confirmPass)
+            ? $("#divCheckPasswordMatch").html("Passwords do not match.")
+                //&#10007") //cross symbol
+            : $("#divCheckPasswordMatch").html("Passwords match!");
+                //&#10004"); //check symbol
+        }
+        $(document).ready(function() {
+          $("#reInputPassword").keyup(checkPasswordMatch);
+        });
+      </script>
+
       <link rel="stylesheet" href="css/font-awesome.css" />
       <link rel="stylesheet" href="css/bootstrap.css" />
       <link rel="stylesheet" href="css/skel.css" />
@@ -11,14 +44,57 @@
   <body>
     <form class="form-signin" form="form">
       <div><h1><center>Registration</center></h1></div>
-      <input type="email" id="inputEmail" class="form-control"
-        placeholder="Email address" required="" autofocus="" autocomplete="off">
-      <input type="password" id="inputPassword" class="form-control"
-        placeholder="Password" required="" autocomplete="off"> 
-      <input type="password" id="inputPassword" class="form-control"
-        placeholder="Re-type Password" required="" autocomplete="off"> 
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Next</button>
+      <!-- email input -->
+      <div>
+        <input type="email" id="inputEmail" class="form-control"
+        placeholder="Email address" required="" autofocus="" 
+        autocomplete="off" />
+      </div>
+      <!-- password input -->
+
+      <div>
+        <input type="password" id="inputPassword" class="form-control"
+          placeholder="Password" required="" autocomplete="off" />
+      </div>
+      <!-- retype password -->
+      <div>
+        <input type="password" id="reInputPassword" class="form-control"
+          placeholder="Re-type Password" required="" autocomplete="off">
+        <span class="passwordMatchAlert" id="divCheckPasswordMatch" /></span>
+      </div>
+      <!-- button -->
+      <button class="btn btn-lg btn-primary btn-block"
+        id="btnSubmit" type="submit">Next</button>
+
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $("btnSubmit").click(function(){
+            Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r",
+              "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");
+
+            var User = Parse.Object.extend("_User");
+            var newUser = new User();
+
+            newUser.set("username",
+                document.getElementById('inputEmail').value);
+            newUser.set("password",
+                document.getElementById('inputPassword').value);
+            newUser.set("email", document.getElementById('inputEmail').value);
+
+            newUser.signUp(null, { 
+              success: function(newUser){
+                console.log("saved");
+                $(document).ready(function(){
+                  var url = "https://hackware.io";
+                  $(location).attr('href', url);
+                });
+              },
+              error: function(newUser,  err){
+                console.log("error: " + err.ode + " " + err.message);
+              }
+            });
+          });
+        })
+      </script>
   </body>
 </html>
-
-
