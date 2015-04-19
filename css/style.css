@@ -138,6 +138,12 @@ span.icon.alt.major.width {
   color: aliceblue;
 }
 */
+
+.btn-block{
+  display: block;
+  width: 100%;
+}
+
 .btn-default{
   margin-top: 20px;
   margin-bottom: 20px;
@@ -510,6 +516,7 @@ label {
 input[type="text"],
 input[type="password"],
 input[type="email"],
+input[type="inputBox"],
 select,
 textarea {
   -moz-appearance: none;
@@ -608,14 +615,14 @@ select:focus::-ms-value {
 input[type="checkbox"],
 input[type="radio"] {
   -moz-appearance: none;
-  -webkit-appearance: none;
+  -webkit-appearance: checkbox;
   -o-appearance: none;
   -ms-appearance: none;
   appearance: none;
   display: block;
   float: left;
-  margin-right: -2em;
-  opacity: 0;
+  /*margin-right: -2em;*/
+  /*opacity: 0;*/
   width: 1em;
   z-index: -1;
 }
@@ -918,7 +925,6 @@ ul.actions {
 }
 
 ul.actions li {
-  display: inline-block;
   padding: 0 1em 0 0;
   vertical-align: middle;
 }
