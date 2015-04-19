@@ -44,12 +44,12 @@
         //for every item rented, submit to parse.
         var rental = Parse.Object.extend("Rental");
         var rental = new rental();
-        var temp = parseInt(document.getElementById('item1'));
+        var temp = parseInt(document.getElementById('#item1'));
         rental.save({
-          firstname: document.getElementById('firstname').value,
-          lastname: document.getElementById('lastname').value,
-          phone: document.getElementById('phone').value,
-          item: document.getElementById('item1').value,
+          firstname: document.getElementById("#firstname").value,
+          lastname: document.getElementById("#lastname").value,
+          phone: document.getElementById('#phone").value,
+          item: document.getElementById("#item1").value,
           returned: false,
         }, {
           success: function(gamescore) {
@@ -61,8 +61,8 @@
             //query.equalTo("itemID",2);//DOES work... TODO <============================
             query.first({
               success: function(results) {
-                console.log("results"+results);
-                results.set("rented", true);
+                console.log("results "+results);
+                results.set("rented ", true);
                 results.save();
                 console.log("successful save");
               },
