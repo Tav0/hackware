@@ -1,15 +1,34 @@
-$(function() {
-   
-      Parse.$ = jQuery;
+$(document).ready(function() {
+  $("#button").click(function(event){
+    Parse.$ = jQuery;
+    Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r",
+      "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");
+    //prevent default submit event
 
-      Parse.initialize("przcdqikspzjnuigtehj9jxkn6f1prfaixb2nk2r", "gud81fbe4prg1rdllmjvhldb8cba21imyrogrmrk");
+    console.log("login.js");
+    var username = $("#emailid").val();
+    console.log(username);
+    var password = $("#passid").val();
+
+    Parse.User.logIn(username, password, {
+      success: function(user) {
+        window.location.href="inventory.html";
+        //alert("Welcome! " + username);
+        return true;
+      },
+        
+      error: function(user, error) {
+        $('.login-form .error').html("Invalid email or password. Please try again.").show();
+        console.log("Error Message:", error);
+        return false;
+      }
+    });
+    event.preventDefault();
+  });
 });
-      
-$('.popupBoxContent').on('submit', function(e){
 
-  //prevent default submit event
-  e.preventDefault;
 
+  /**    
   //Get data from the form and put them into variables
   var data = $(this).serializeArray(),
     username = data[0].value;
@@ -30,5 +49,5 @@ $('.popupBoxContent').on('submit', function(e){
       console.log(error);
     }
   });
-});
+});*/
     

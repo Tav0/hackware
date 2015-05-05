@@ -25,8 +25,9 @@ h1#title {
 }
 
 div#container {
-  margin: 5vh;
-  padding: 7vh;
+  padding-left: 10vh;
+  padding-right: 10vh;
+  padding-top: 3vh;
 }
 
 p#input {
@@ -136,11 +137,11 @@ span.icon.alt.major.width {
 
 .popupBoxWrapper{
   width: 600px;
-  margin: 50px auto;
+  margin: calc(330.594px/2) auto;
   text-align: left;
 }
 
-.popupBoxContent{
+.login-form{
   background-color: rgba(26,28,36,.8);
   padding: 15px;
   color: #FFF; /*rgb(82,181,83);*/
@@ -630,7 +631,7 @@ select:focus::-ms-value {
 input[type="checkbox"],
 input[type="radio"] {
   -moz-appearance: none;
-  -webkit-appearance: checkbox;
+  -webkit-appearance: radio;
   -o-appearance: none;
   -ms-appearance: none;
   appearance: none;
@@ -1011,8 +1012,8 @@ dl {
 }
 
 table {
-  margin: 0 0 2em 0;
-  width: 100%;
+  margin: 0 auto;
+  width: 50%;
 }
 
 table tbody tr {

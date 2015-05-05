@@ -18,6 +18,7 @@
       <script src="js/jquery.dropotron.min.js"></script>
       <script src="js/jquery.scrollex.min.js"></script>
       <script src="js/skel.min.js"></script>
+      <script src="js/init.js"></script>
       <script src="js/skel-layers.min.js"></script>   
       <script src="js/parse-1.3.4.min.js"></script>
       <script type="text/javascript">
@@ -26,9 +27,11 @@
           var confirmPass = $("#reInputPassword").val();
 
           (pass != confirmPass)
-            ? $("#divCheckPasswordMatch").html("Passwords do not match.")
+            ? $("#passMatch").html("<span style='color:#E44C65'>&#10007</span>")
+                //Passwords do not match.")
                 //&#10007") //cross symbol
-            : $("#divCheckPasswordMatch").html("Passwords match!");
+          : $("#passMatch").html("<span style='color:#4CE46B'>&#10004</span>");
+                //Passwords match!");
                 //&#10004"); //check symbol
         }
         $(document).ready(function() {
@@ -47,102 +50,106 @@
     <form class="form-signin" form="form">
       <!-- email input -->
       <div>
+        <div id="inputTitle">E-mail</div>
         <input type="email" id="inputEmail" class="form-control"
         placeholder="Email Address" required="" autofocus="" 
         autocomplete="off" />
       </div>
       <!-- password input -->
-
       <div>
+        <div id="inputTitle">Password</div>
+        <span class="passwordMatchAlert" id="passMatch"></span>
         <input type="password" id="inputPassword" class="form-control"
           placeholder="Password" required="" autocomplete="off" />
-      </div>
-      <!-- retype password -->
-      <div>
         <input type="password" id="reInputPassword" class="form-control"
           placeholder="Re-type Password" required="" autocomplete="off">
-        <span class="passwordMatchAlert" id="divCheckPasswordMatch" /></span>
       </div>
 
       <div>
+        <div id="inputTitle">First Name</div>
         <input type="text" id="inputFirstName" class="form-control"
           placeholder="First Name" required="" autocomplete="off" />
       </div>
 
       <div>
+        <div id="inputTitle">Last Name</div>
         <input type="text" id="inputLastName" class="form-control"
           placeholder="Last Name" required="" autocomplete="off" />
       </div>
 
       <div>
+        <div id="inputTitle">School</div>
         <input type="text" id="inputSchool" class="form-control"
           placeholder="School Name" required="" autocomplete="off" />
       </div>
       
       <!-- what hardware items are you interested in renting? -->
       <div>
+        <div id="inputTitle">
+          What hardware would you be interested in renting?
+        </div>
         <input type="text" id="inputHardware" class="form-control"
-          placeholder="Ex: Apple Watch, Android phone, Oculus Rift, Unix-Based Laptop, HoloLens, Arduino and Others" required=""
+          placeholder="Ex: Android phone, Rifts, Laptops, HoloLens, Arduino or Other" required=""
           autocomplete="off" />
       </div>
       <div>
+        <div id="inputTitle">
+          Apartment# or Box# (if you have one)
+        </div>
         <input type="text" id="inputAptBox" class="form-control"
-          placeholder="Apartment 26 or Box 72762" required="" 
-          autocomplete="off" />
+          placeholder="Apartment 26 or Box 72762" autocomplete="off" />
       </div>
 
       <div>
+        <div id="inputTitle">Address</div>
         <input type="text" id="inputAddress" class="form-control"
           placeholder="Your address" required="" autocomplete="off" />
       </div>
 
       <div>
+        <div id="inputTitle">City</div>
         <input type="text" id="inputCity" class="form-control"
           placeholder="City" required="" autocomplete="off" />
       </div>
 
       <div>
+        <div id="inputTitle">State</div>
         <input type="text" id="inputState" class="form-control"
           placeholder="State" required="" autocomplete="off" />
       </div>
 
       <div>
+        <div id="inputTitle">Zip Code</div>
         <input type="text" id="inputZipCode" class="form-control"
           placeholder="Zip Code" required="" autocomplete="off" />
       </div>
       
       <!-- Gender identify -->
+      <div id="inputGender">
+        <div id="inputTitle">Gender</div>
+        <input type="radio" name="sex" value="Male" autocomplete="off">Male<br>
+        <input type="radio" name="sex" value="Female"
+                                       autocomplete="off">Female<br>
+        <input type="radio" name="sex" value="Other" autocomplete="off">Other
+      </div>
       <div>
-        <input type="checkbox" value="Female" id="inputGender" class="form-control"
-          required="" autocomplete="off">Female<br>
-        <input type="checkbox" value="Male" id="inputGender" class="form-control"
-          required="" />Male<br>
-
+        <div id="inputTitle">Age</div>
+        <input type="text" id="inputAge" class="form-control" placeholder="Age" 
+          required="" autocomplete="off" />
       </div>
 
       <div>
-        <input type="text" id="inputAge" class="form-control"
-          placeholder="Age" required="" autocomplete="off" />
-      </div>
-
-      <div>
+        <div id="inputTitle">Education Level</div>
         <input type="text" id="inputEduLvl" class="form-control"
           placeholder="Education Level" required="" autocomplete="off" />
       </div>
 
       <!-- check for terms -->
-
-
-      <!-- button -->
-      <!-- <button class="btn btn-lg btn-primary btn-block typeform-share button"
-              href="httpsL//hackware.typeform.com/to/CNOtal" id="btnSubmit" 
-              type="submit" href="httpsL//hackware.typeform.com/to/CNOtal" 
-              data-mode="1" target="_blank">Next</button> -->
-            <div id="btn">
-              <button class="button" id="btnSubmit">Submit</button>
-            </div>
     </form>
+    <div id="btn">
+      <button class="button" id="btnSubmit">Submit</button>
     </div>
-      <script src="js/register.js"></script>
+  </div>
+  <script src="js/register.js"></script>
   </body>
 </html>

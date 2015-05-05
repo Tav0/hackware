@@ -6,46 +6,33 @@ $(document).ready(function(){
     var User = Parse.Object.extend("_User");
     var newUser = new User();
 
-    newUser.set("username",
-        document.getElementById('inputEmail').value);
-    newUser.set("password",
-        document.getElementById('inputPassword').value);
-    newUser.set("email", 
-        document.getElementById('inputEmail').value);
-    newUser.set("first", 
-        document.getElementById('inputFirstName').value);
-    newUser.set("last", 
-        document.getElementById('inputLastName').value);
-    newUser.set("institution", 
-        document.getElementById('inputSchool').value);
+    newUser.set("username", $("#inputEmail").val());
+    newUser.set("password", $("#inputPassword").val());
+    newUser.set("email", $("#inputEmail").val());
+    newUser.set("first", $("#inputFirstName").val());
+    newUser.set("last", $("#inputLastName").val());
+    newUser.set("institution", $("#inputSchool").val());
     //interested hardware
-    newUser.set("hardware", 
-        document.getElementById('inputHardware').value);
-    newUser.set("boxApt", 
-        document.getElementById('inputAptBox').value);
-    newUser.set("address", 
-        document.getElementById('inputAddress').value); 
-    newUser.set("city", 
-        document.getElementById('inputCity').value);
-    newUser.set("state", 
-        document.getElementById('inputState').value);  
-    newUser.set("zipcode", 
-        document.getElementById('inputZipCode').value);
+    newUser.set("hardware", $("#inputHardware").val());
+    newUser.set("boxApt", $("#inputAptBox").val());
+    newUser.set("address", $("#inputAddress").val()); 
+    newUser.set("city", $("#inputCity").val());
+    newUser.set("state", $("#inputState").val());  
+    newUser.set("zipcode", $("#inputZipCode").val());
     //gender
-    newUser.set("gender", 
-        document.getElementById('inputGender').value);
-    newUser.set("age", 
-        document.getElementById('inputAge').value);
-    newUser.set("educationlvl", 
-        document.getElementById('inputEduLvl').value);
+    newUser.set("gender", $("input:radio[name=sex]:checked").val());
+    newUser.set("age", $("#inputAge").val());
+    newUser.set("educationlvl", $("#inputEduLvl").val());
     //check for terms
 
     newUser.signUp(null, { 
       success: function(newUser){
-        console.log("saved");
+        var userACL = new Parse.ACL(newUser);
+        newUser.setACL(userACL);
+        newUser.save();
         window.location.href="inventory.html"; 
       },
-      error: function(newUser,  err){
+      error: function(newUser,  err){ //add if email is already used.
         console.log("error: " + err.code + " " + err.message);
       }
     });

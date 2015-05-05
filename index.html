@@ -1,341 +1,332 @@
-<!DOCTYPE html> 
 <html class="global wide items">
-  <head>
-    <title>HackWare</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="title" content="HackWare"/>
-    <meta name="description" content="Bringing hardware to people at a 
-    fraction of the price." />
-    <meta name="keywords" content="hardware, rent, hack, create, develop, 
-    hackers, hackware, rent hardware, hackathons" />
-    <meta property="og:image" content="images/hackware_logo.png"/>
-    <link rel="image_src" href="images/hackware_logo.png"/>
-    <link rel="shortcut icon" href="images/hackware_icon.png"
-                              type="image/png"/>
-    <link rel="apple-touch-icon" href="images/hackware_icon.png"
-                                 type="image/png"/>
+<head>
+  <title>HackWare</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="title" content="HackWare"/>
+  <meta name="description" content="Bringing hardware to people at a 
+  fraction of the price." />
+  <meta name="keywords" content="hardware, rent, hack, create, develop, 
+  hackers, hackware, rent hardware, hackathons" />
+  <meta property="og:image" content="images/hackware_logo.png"/>
+  <link rel="image_src" href="images/hackware_logo.png"/>
+  <link rel="shortcut icon" href="images/hackware_icon.png"
+                            type="image/png"/>
+  <link rel="apple-touch-icon" href="images/hackware_icon.png"
+                               type="image/png"/>
 
-    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+  <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 
-    <script src="js/jquery-2.1.3.min.js"></script>
-    <script src="js/jquery.scrolly.min.js"></script>
-    <script src="js/jquery.dropotron.min.js"></script>
-    <script src="js/jquery.scrollex.min.js"></script>
-    <script src="js/parse-1.3.4.min.js"></script>
-    <script src="js/skel.min.js"></script>
-    <script src="js/skel-layers.min.js"></script>   
-    <script src="js/login.js"></script>
-    <script src="js/init.js"></script>
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <script src="js/jquery.scrolly.min.js"></script>
+  <script src="js/jquery.dropotron.min.js"></script>
+  <script src="js/jquery.scrollex.min.js"></script>
+  <script src="js/parse-1.3.4.min.js"></script>
+  <script src="js/skel.min.js"></script>
+  <script src="js/skel-layers.min.js"></script>   
+  <script src="js/login.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/underscore.js"></script>
+  <script src="js/popup.js"></script>
+  <noscript>
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/skel.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-xlarge.css" />
+  </noscript>
+  <!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+  <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+</head>
 
-    <script type="text/javascript">
-      function toggle_visibility(id) {
-        var e = document.getElementById(id);
-        if(e.style.display == 'block')
-          e.style.display = 'none';
-        else
-          e.style.display = 'block';
-        }
-    </script>
-    <noscript>
-      <link rel="stylesheet" href="css/font-awesome.css" />
-      <link rel="stylesheet" href="css/bootstrap.css" />
-      <link rel="stylesheet" href="css/skel.css" />
-      <link rel="stylesheet" href="css/style.css" />
-      <link rel="stylesheet" href="css/style-xlarge.css" />
-    </noscript>
-    <!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
-    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
-  </head>
+<body class="landing">
+  <!-- POP UP -->
+  <!-- END POP UP -->
+  <!-- Header -->
+  <header id="header"> <h1 id="logo">
+      <a href="index.html">HackWare</a></h1> 
+    <nav id="nav"> 
+      <ul>
+        <li><a href="index.html">Home</a></li> 
+        <li><a href="inventory.html">Inventory</a></li> 
+        <li><a href="payment.html">Payment</a></li>
+        <li><a href="#" id="logging">Sign In</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <body class="landing">
-    <!-- POP UP -->
-   
-    <div id="popupBox">
-      <div class="popupBoxWrapper">
-        <form class="popupBoxContent" role="form">
-          <a href="javascript:void(0)" 
-            onclick="toggle_visibility('popupBox');">
-            <i class="fa fa-times" id="x"></i></a>
-          <h3><center>Sign in!</center></h3>
-          <div class="popuptext">
-            <p id="input">Email</p> 
-            <input type="text" name="username" class="form-control loginEmail" 
-            id="emailid" placeholder="Enter email">
-            <p id="pass">Password</p>
-            <input type="password" name="password" class="form-control loginEmail" 
-            id="emailid" placeholder="Enter password">
-          </div>
-          <button type="submit" class="button" id="button">Submit</button>
-          <p>Didn't sign up yet? No problem! Make an account 
-          <a href="register.html">here</a>!</p>
-        </form>
-      </div>
-    </div>
+  <!-- Banner -->
+  <section id="banner">
+    <div class="content">
+      <!-- POP UP -->
+      <div id="popupBox">
+        <div class="popupBoxWrapper">
+          <form class="login-form">
+            <i class="fa fa-times" id="x"></i>
+            </a>
+            <h3><center>Sign In!</center></h3>
+            <div class="error" style="display:none"></div>
+            <div class="popuptext">
+              <input type="text" name="username" class="form-control 
+              loginEmail" id="emailid" autocomplete="off"
+                                       placeholder="Enter Email">
 
-    <!-- END POP UP -->
-
-    <!-- Header -->
-    <header id="header"> <h1 id="logo">
-        <a href="index.html">HackWare</a></h1> 
-      <nav id="nav"> 
-        <ul>
-          <li><a href="index.html">Home</a></li> 
-          <li><a href="inventory.html">Inventory</a></li> 
-          <li><a href="payment.html">Payment</a></li>
-          <li><a href="javascript:void(0)" onclick="toggle_visibility('popupBox');">Sign In</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <!-- Banner -->
-    <section id="banner">
-      <div class="content">
-        <header>
-          <!-- <h2>HackWare</h2> -->
-          <img src="images/hw.png" alt="" />
-          <p>We are dedicated to helping students access hardware at affordable
-          rates <br />
-          so that they can imagine, design, and create technical projects with 
-          their skills.</p>
-        </header>
-      </div>
-      <a href="#about" class="goto-next scrolly">About Us
-      </a>
-    </section>
-    <!-- One -->
-    <section id="about" class="spotlight">
-      <div class="content" style="padding-right: 50px; padding-bottom: 50px">
-        <div class="row" id="who-row">
-          <div class="12u 10u$(medium)"> 
-            <img src="images/face_logo.png" id="who-img"> 
-          </div>
-          <div class="6u 10u$(medium)">
-            <h2>Who are we?</h2>
-            <p>We are hackathon hackers dedicated to connecting students and 
-            hardware. As fellow hackers, we want you to have equipment so you 
-            can show off your talent and imagination!</p>
-          </div>
-          <div class="6u 10u$(medium)">
-            <h2>What do we do?</h2>
-            <p>
-            We rent hardware to students who want to try out different items.
-            Maybe you are unable to access something, or you simply want to try
-            out a new product. Either way, we're here to help you get the
-            equipment you need!
-            </p>
-          </div>
-          <div class="6u 10u$(medium)">
-            <h2>Why do we exist?</h2>
-            <p>Many students need easier access to hardware, and we want to make
-            that a reality. Information and advice is widely available, and your
-            skills just need equipment to work on.</p>
-          </div>
-          <div class="6u 10u$(medium)">
-            <h2>Are hackers dangerous?!</h2>
-            <p>We strongly oppose the use of technology for criminal activities. 
-            At HackWare, we define "hackers" as students who innovate with 
-            software and hardware to create better technology. To see what 
-            students are making, please visit 
-            <a href="http://challengepost.com/">ChallengePost</a>.</p>
-          </div>
+              <input type="password" name="password" class="form-control
+              loginEmail" id="passid" autocomplete="off" 
+                                      placeholder="Enter Password">
+            </div>
+            <button type="button" class="button" id="button">Submit</button>
+            <p>Didn't sign up yet? No problem! Make an account 
+            <a href="register.html">here</a>!</p>
+          </form>
         </div>
       </div>
-      <a href="#cost" class="goto-next scrolly">Next</a>
-    </section>
-    <!-- Two -->
-    <section id="cost" class="spotlight">
-      <div class="content" style="padding-right: 2.5em">
-        <div class="row" id="faq-row">
-          <div class="12u 10u$(medium)"> 
-            <img src="images/faq_logo.png" id="faq-img"> 
-          </div>
+      <!-- END POP UP -->
 
-          <div class="6u 10u$(medium)">
-            <h2>How do you rent hardware?</h2>
-            <p>You can visit our <a href="payment.html">payment page</a> to
-            compare rental prices on rent-ready items with their full retail
-            value. Once you have paid us for the rental items, we will ship
-            it to you in a flat rate box with return postage. At the end of
-            your 1-week rental period, simply send everything back.</p>
-            <!-- <p>We offer various <a href="cost.html">rental prices</a> based on delivery speed and
+      <header>
+        <!-- <h2>HackWare</h2> -->
+        <img src="images/hw.png" alt="" />
+        <p>We are dedicated to helping students access hardware at affordable
+        rates <br />
+        so that they can imagine, design, and create technical projects with 
+        their skills.</p>
+      </header>
+    </div>
+    <a href="#about" class="goto-next scrolly">About Us
+    </a>
+  </section>
+  <!-- One -->
+  <section id="about" class="spotlight">
+    <div class="content" style="padding-right: 50px; padding-bottom: 50px">
+      <div class="row" id="who-row">
+        <div class="12u 10u$(medium)"> 
+          <img src="images/face_logo.png" id="who-img"> 
+        </div>
+        <div class="6u 10u$(medium)">
+          <h2>Who are we?</h2>
+          <p>We are hackathon hackers dedicated to connecting students and 
+          hardware. As fellow hackers, we want you to have equipment so you 
+          can show off your talent and imagination!</p>
+        </div>
+        <div class="6u 10u$(medium)">
+          <h2>What do we do?</h2>
+          <p>
+          We rent hardware to students who want to try out different items.
+          Maybe you are unable to access something, or you simply want to try
+          out a new product. Either way, we're here to help you get the
+          equipment you need!
+          </p>
+        </div>
+        <div class="6u 10u$(medium)">
+          <h2>Why do we exist?</h2>
+          <p>Many students need easier access to hardware, and we want to make
+          that a reality. Information and advice is widely available, and your
+          skills just need equipment to work on.</p>
+        </div>
+        <div class="6u 10u$(medium)">
+          <h2>Are hackers dangerous?!</h2>
+          <p>We strongly oppose the use of technology for criminal activities. 
+          At HackWare, we define "hackers" as students who innovate with 
+          software and hardware to create better technology. To see what 
+          students are making, please visit 
+          <a href="http://challengepost.com/">ChallengePost</a>.</p>
+        </div>
+      </div>
+    </div>
+    <a href="#cost" class="goto-next scrolly">Next</a>
+  </section>
+  <!-- Two -->
+  <section id="cost" class="spotlight">
+    <div class="content" style="padding-right: 2.5em">
+      <div class="row" id="faq-row">
+        <div class="12u 10u$(medium)"> 
+          <img src="images/faq_logo.png" id="faq-img"> 
+        </div>
+
+        <div class="6u 10u$(medium)">
+          <h2>How do you rent hardware?</h2>
+          <p>You can visit our <a href="payment.html">payment page</a> to
+          compare rental prices on rent-ready items with their full retail
+          value. Once you have paid us for the rental items, we will ship
+          it to you in a flat rate box with return postage. At the end of
+          your 1-week rental period, simply send everything back.</p>
+          <!-- <p>We offer various <a href="cost.html">rental prices</a> based on delivery speed and
             shipping insurance. This lets you choose how fast the hardware gets
             to you! We will also open a credit card authorization for the full
             retail value of all items you rent. If you return all items on time
             and in the same condition as when we sent them to you, we will not
             charge you anything. This would be like getting a hotel room and
             taking care of it.</p> -->
-          </div>
-          <div class="6u 10u$(medium)">
-            <h2>What if you break or keep hardware?</h2>
-            <p>We are here for all students. If you break or return anything
-            late, you will be penalized because other hackers are waiting to
-            use those items. Being late costs you 10% of the full retail value.
-            Afterwards, it will cost you an additional 10% every day. At 100%,
-            you get a strike. Three strikes, and you're out. See our
-            <a href="tos.html">terms and conditions</a> to learn more.</p>
-          </div>
-          <div class="6u 10u$(medium)">
-            <h2>How long can you rent hardware?</h2>
-            <p>Sharing is caring, so the default rental period is 1 week. If
-            there is not a waitlist for the item, you may extend your rental by
-            3 days, twice. At the end of your rental period, late charges will
-            apply. In short, libraries have inspired us.</p>
-          </div>
-          <div class="6u 10u$(medium)">
-            <h2>What if an item breaks during shipping?</h2>
-            <p>We will always ship with insurance and a tracking number, and we
-            advise you to do the same when returning the hardware. If anything
-            happens to the hardware, either one of us will be able to file a
-            claim with the post carrier for reimbursement.</p>
-          </div>
+        </div>
+        <div class="6u 10u$(medium)">
+          <h2>What if you break or keep hardware?</h2>
+          <p>We are here for all students. If you break or return anything
+          late, you will be penalized because other hackers are waiting to
+          use those items. Being late costs you 10% of the full retail value.
+          Afterwards, it will cost you an additional 10% every day. At 100%,
+          you get a strike. Three strikes, and you're out. See our
+          <a href="tos.html">terms and conditions</a> to learn more.</p>
+        </div>
+        <div class="6u 10u$(medium)">
+          <h2>How long can you rent hardware?</h2>
+          <p>Sharing is caring, so the default rental period is 1 week. If
+          there is not a waitlist for the item, you may extend your rental by
+          3 days, twice. At the end of your rental period, late charges will
+          apply. In short, libraries have inspired us.</p>
+        </div>
+        <div class="6u 10u$(medium)">
+          <h2>What if an item breaks during shipping?</h2>
+          <p>We will always ship with insurance and a tracking number, and we
+          advise you to do the same when returning the hardware. If anything
+          happens to the hardware, either one of us will be able to file a
+          claim with the post carrier for reimbursement.</p>
         </div>
       </div>
-      <a href="#sponsors" class="goto-next scrolly">Next</a>
-    </section>
+    </div>
+    <a href="#sponsors" class="goto-next scrolly">Next</a>
+  </section>
 
-    <!-- Three -->
-    <section id="sponsors" class="wrapper style1 special fade-up">
-      <div class="container">
-        <header class="major">
-          <h2>Donors</h2>
-          <p>Thanks to them we can let hackers around the world create
-          awesome hacks!</p>
-        </header>
-        <div class="box alt">
-          <div class="row uniform">
-            <section class="6u 6u(medium) 12u$(xsmall)">
-              <span class="icon alt major">
-                <a href="https://getpebble.com">
-                  <img id="partner-logo-whitebg" src="images/logos/pebble.svg" />
-                </a>
-              </span>
-              <h3>
-                <a id="logo-link" href="https://getpebble.com">Pebble</a>
-              </h3>
-              <!--  <p>Donor 1</p> -->
-            </section>
-            <section class="6u 6u$(medium) 12u$(xsmall)">
-              <span class="icon alt major">
-                <a href="https://www.thalmic.com">
-                  <img id="partner-logo-whitebg"
-                       src="images/logos/thalmic_labs.png" /></a>
-              </span>
-              <h3>
-                <a id="logo-link" href="https://www.thalmic.com">Thalmic
-                  Labs</a>
-              </h3>
-              <!--  <p>Donor 2</p> -->
-            </section>
-          </div>
-          <br>
-          <div class="container">
-            <header class="major">
-              <h2>Partners</h2>
-              <p>These are our partners, for without them we wouldn't have any
-              venue to make ourselves known.</p>
-            </header>
-            <div class="box alt">
-              <div class="row uniform"> 
-                <section class="4u 6u(medium) 12u$(xsmall)">
-                  <span class="icon alt major">
-                    <a href="http://pearlhacks.com">
-                      <img id="partner-logo-transparent"
-                      src="images/logos/pearl_hacks.png" />
-                    </a>
-                  </span>
-                  <h3>
-                    <a id="logo-link" href="http://pearlhacks.com">Pearl Hacks</a>
-                  </h3>
-                  <p>March 21 - 22, 2015</p>
-                </section>
-                <section class="4u 6u(medium) 12u$(xsmall)">
-                  <span class="icon alt major">
-                    <a href="http://raspberryjam.hacknc.com">
-                      <img id="partner-logo-whitebg"
-                      src="images/logos/raspberry_jam.png" />
-                    </a>
-                  </span>
-                  <h3>
-                    <a id="logo-link" href="http://raspberryjam.hacknc.com">Raspberry Jam</a>
-                  </h3>
-                  <p>March 28, 2015</p>
-                </section>   
-                <section class="4u$ 6u$(medium) 12u$(xsmall)">
-                  <span class="icon alt major">
-                    <a href="http://hackpsu.org">
-                      <img id="partner-logo" src="images/logos/hackpsu.png" />
-                    </a>
-                  </span>
-                  <h3>
-                    <a id="logo-link" href="http://hackpsu.org">HackPSU</a>
-                  </h3>
-                  <p>March 28 - 29, 2015</p>
-                </section>
-                <section class="6u 6u(medium) 12u$(xsmall)">
-                  <span class="icon alt major">
-                    <a href="https://bitca.mp">
-                      <img id="partner-logo" src="images/logos/bitcamp.svg" />
-                    </a>
-                  </span>
-                  <h3>
-                    <a id="logo-link" href="https://bitca.mp">Bitcamp</a>
-                  </h3>
-                  <p>April 10 - 12, 2015</p>
-                </section>
-                <section class="6u$ 6u$(medium) 12u$(xsmall)">
-                  <span class="icon alt major">
-                    <a href="http://hackru.org">
-                      <img id="partner-logo-transparent"
-                      src="images/logos/hackru.png" />
-                    </a>
-                  </span>
-                  <h3>
-                    <a id="logo-link" href="http://hackru.org">HackRU</a>
-                  </h3>
-                  <p>April 18 - 19, 2015</p>
-                </section>
-              </div>
+  <!-- Three -->
+  <section id="sponsors" class="wrapper style1 special fade-up">
+    <div class="container">
+      <header class="major">
+        <h2>Donors</h2>
+        <p>Thanks to them we can let hackers around the world create
+        awesome hacks!</p>
+      </header>
+      <div class="box alt">
+        <div class="row uniform">
+          <section class="6u 6u(medium) 12u$(xsmall)">
+            <span class="icon alt major">
+              <a href="https://getpebble.com">
+                <img id="partner-logo-whitebg" src="images/logos/pebble.svg" />
+              </a>
+            </span>
+            <h3>
+              <a id="logo-link" href="https://getpebble.com">Pebble</a>
+            </h3>
+            <!--  <p>Donor 1</p> -->
+          </section>
+          <section class="6u 6u$(medium) 12u$(xsmall)">
+            <span class="icon alt major">
+              <a href="https://www.thalmic.com">
+                <img id="partner-logo-whitebg"
+                     src="images/logos/thalmic_labs.png" /></a>
+            </span>
+            <h3>
+              <a id="logo-link" href="https://www.thalmic.com">Thalmic
+                Labs</a>
+            </h3>
+            <!--  <p>Donor 2</p> -->
+          </section>
+        </div>
+        <br>
+        <div class="container">
+          <header class="major">
+            <h2>Partners</h2>
+            <p>These are our partners, for without them we wouldn't have any
+            venue to make ourselves known.</p>
+          </header>
+          <div class="box alt">
+            <div class="row uniform"> 
+              <section class="4u 6u(medium) 12u$(xsmall)">
+                <span class="icon alt major">
+                  <a href="http://pearlhacks.com">
+                    <img id="partner-logo-transparent"
+                         src="images/logos/pearl_hacks.png" />
+                  </a>
+                </span>
+                <h3>
+                  <a id="logo-link" href="http://pearlhacks.com">Pearl Hacks</a>
+                </h3>
+                <p>March 21 - 22, 2015</p>
+              </section>
+              <section class="4u 6u(medium) 12u$(xsmall)">
+                <span class="icon alt major">
+                  <a href="http://raspberryjam.hacknc.com">
+                    <img id="partner-logo-whitebg"
+                         src="images/logos/raspberry_jam.png" />
+                  </a>
+                </span>
+                <h3>
+                  <a id="logo-link" href="http://raspberryjam.hacknc.com">Raspberry Jam</a>
+                </h3>
+                <p>March 28, 2015</p>
+              </section>   
+              <section class="4u$ 6u$(medium) 12u$(xsmall)">
+                <span class="icon alt major">
+                  <a href="http://hackpsu.org">
+                    <img id="partner-logo" src="images/logos/hackpsu.png" />
+                  </a>
+                </span>
+                <h3>
+                  <a id="logo-link" href="http://hackpsu.org">HackPSU</a>
+                </h3>
+                <p>March 28 - 29, 2015</p>
+              </section>
+              <section class="6u 6u(medium) 12u$(xsmall)">
+                <span class="icon alt major">
+                  <a href="https://bitca.mp">
+                    <img id="partner-logo" src="images/logos/bitcamp.svg" />
+                  </a>
+                </span>
+                <h3>
+                  <a id="logo-link" href="https://bitca.mp">Bitcamp</a>
+                </h3>
+                <p>April 10 - 12, 2015</p>
+              </section>
+              <section class="6u$ 6u$(medium) 12u$(xsmall)">
+                <span class="icon alt major">
+                  <a href="http://hackru.org">
+                    <img id="partner-logo-transparent"
+                         src="images/logos/hackru.png" />
+                  </a>
+                </span>
+                <h3>
+                  <a id="logo-link" href="http://hackru.org">HackRU</a>
+                </h3>
+                <p>April 18 - 19, 2015</p>
+              </section>
             </div>
-            <footer class="major">
-              <ul class="actions">
-                <li><a href="#" class="button">Home</a></li>
-              </ul>
-            </footer>
           </div>
-    </section>
+          <footer class="major">
+            <ul class="actions">
+              <li><a href="#" class="button">Home</a></li>
+            </ul>
+          </footer>
+        </div>
+  </section>
 
-    <!-- Four -->
-    <section id="signup" class="wrapper style2 special 
-    fade-up">
-      <div class="container">
-        <header>
-          <h2>
-            <a class="typeform-share" id="signup"
-              href="https://hackware.io/register.html">Get Hacking</a>
-          </h2>
-          <!-- <script src="js/type_form.js"></script> -->
-        </header>
-      </div>
-    </section>
+  <!-- Four -->
+  <section id="signup" class="wrapper style2 special 
+  fade-up">
+    <div class="container">
+      <header>
+        <h2>
+          <a class="typeform-share" id="signup"
+                                    href="register.html">Get Hacking</a>
+        </h2>
+      </header>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer id="footer">
-      <ul class="icons">
-        <li><a href="https://twitter.com/Hack_Ware" class="icon alt fa-twitter">
-            <span class="label">Twitter</span></a></li>
-        <li><a
-                  href="https://www.facebook.com/pages/HackWare/426489770840939" 
-                  class="icon alt fa-facebook">
-            <span class="label">Facebook</span></a></li>
-        <!-- <li><a href="#" class="icon alt fa-instagram">
-          <span class="label">Instagram</span></a></li> -->
-      <li><a href="mailto:admin@hackware.io" class="icon alt fa-envelope">
-          <span class="label">Email</span></a></li>
-      </ul>
-      <ul class="copyright">
-        <li>&copy; HackWare. All rights reserved.</li>
-        <li>Created in the Milky Way</li>
-      </ul>
-    </footer>
-     </body>
+  <!-- Footer -->
+  <footer id="footer">
+    <ul class="icons">
+      <li><a href="https://twitter.com/Hack_Ware" class="icon alt fa-twitter">
+          <span class="label">Twitter</span></a></li>
+      <li><a
+                href="https://www.facebook.com/pages/HackWare/426489770840939" 
+                class="icon alt fa-facebook">
+          <span class="label">Facebook</span></a></li>
+      <!-- <li><a href="#" class="icon alt fa-instagram">
+        <span class="label">Instagram</span></a></li> -->
+    <li><a href="mailto:admin@hackware.io" class="icon alt fa-envelope">
+        <span class="label">Email</span></a></li>
+    </ul>
+    <ul class="copyright">
+      <li>&copy; HackWare. All rights reserved.</li>
+      <li>Created in the Milky Way</li>
+    </ul>
+  </footer>
+</body>
 </html>
