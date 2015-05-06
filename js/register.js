@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $("#btnSubmit").click(function(){
+  $("form").submit(function(){
     Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r",
         "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");
 
@@ -32,10 +32,11 @@ $(document).ready(function(){
         newUser.save();
         window.location.href="inventory.html"; 
       },
-      error: function(newUser,  err){ //add if email is already used.
+      error: function(newUser,  err){ //add if email is already used
         console.log("error: " + err.code + " " + err.message);
       }
     });
+    event.preventDefault();
   });
 })
 

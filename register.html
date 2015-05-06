@@ -13,141 +13,127 @@
                                  type="image/png"/>
 
     <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-      <script src="js/jquery-2.1.3.min.js"></script>
-      <script src="js/jquery.scrolly.min.js"></script>
-      <script src="js/jquery.dropotron.min.js"></script>
-      <script src="js/jquery.scrollex.min.js"></script>
-      <script src="js/skel.min.js"></script>
-      <script src="js/init.js"></script>
-      <script src="js/skel-layers.min.js"></script>   
-      <script src="js/parse-1.3.4.min.js"></script>
-      <script type="text/javascript">
-        function checkPasswordMatch(){
-          var pass = $("#inputPassword").val();
-          var confirmPass = $("#reInputPassword").val();
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/jquery.scrolly.min.js"></script>
+    <script src="js/jquery.dropotron.min.js"></script>
+    <script src="js/jquery.scrollex.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/skel-layers.min.js"></script>   
+    <script src="js/parse-1.3.4.min.js"></script>
+    <script type="text/javascript">
+function checkPasswordMatch(){
+  var pass = $("#inputPassword").val();
+  var confirmPass = $("#reInputPassword").val();
 
-          (pass != confirmPass)
-            ? $("#passMatch").html("<span style='color:#E44C65'>&#10007</span>")
-                //&#10007") //cross symbol
-          : $("#passMatch").html("<span style='color:#4CE46B'>&#10004</span>");
-                //&#10004"); //check symbol
-        }
-        $(document).ready(function() {
-          $("#reInputPassword").keyup(checkPasswordMatch);
-        });
-      </script>
+  (pass != confirmPass)
+    ? $("#passMatch").html("<span style='color:#E44C65'>&#10007</span>")
+    //&#10007") //cross symbol
+    : $("#passMatch").html("<span style='color:#4CE46B'>&#10004</span>");
+  //&#10004"); //check symbol
+}
+$(document).ready(function() {
+  $("#reInputPassword").keyup(checkPasswordMatch);
+});
+    </script>
 
-      <link rel="stylesheet" href="css/font-awesome.css" />
-      <link rel="stylesheet" href="css/skel.css" />
-      <link rel="stylesheet" href="css/style.css" />
-      <link rel="stylesheet" href="css/style-xlarge.css" />
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <link rel="stylesheet" href="css/skel.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-xlarge.css" />
   </head>
   <body>
     <div id="container">
-    <h1 id="title">Registration</h1>
-    <form class="form-signin" form="form">
-      <!-- email input -->
-      <div>
+      <h1 id="title">Registration</h1>
+      <form class="form-signin">
+        <!-- email input -->
         <div id="inputTitle">E-mail</div>
         <input type="email" id="inputEmail" class="form-control"
-        placeholder="Email Address" required="" autofocus="" 
-        autocomplete="off" />
-      </div>
-      <!-- password input -->
-      <div>
+          placeholder="Email Address" required="" autofocus="" 
+          autocomplete="off">
+        
+        <!-- password input -->
         <div id="inputTitle">Password</div>
         <span class="passwordMatchAlert" id="passMatch"></span>
         <input type="password" id="inputPassword" class="form-control"
-          placeholder="Password" required="" autocomplete="off" />
+          placeholder="Password" required="" autocomplete="off">
         <input type="password" id="reInputPassword" class="form-control"
           placeholder="Re-type Password" required="" autocomplete="off">
-      </div>
 
-      <div>
+        <!-- First name -->
         <div id="inputTitle">First Name</div>
         <input type="text" id="inputFirstName" class="form-control"
-          placeholder="First Name" required="" autocomplete="off" />
-      </div>
+          placeholder="First Name" required="" autocomplete="off">
 
-      <div>
+        <!-- Last name -->
         <div id="inputTitle">Last Name</div>
         <input type="text" id="inputLastName" class="form-control"
-          placeholder="Last Name" required="" autocomplete="off" />
-      </div>
+          placeholder="Last Name" required="" autocomplete="off">
 
-      <div>
+        <!-- School -->
         <div id="inputTitle">School</div>
         <input type="text" id="inputSchool" class="form-control"
-          placeholder="School Name" required="" autocomplete="off" />
-      </div>
-      
-      <!-- what hardware items are you interested in renting? -->
-      <div>
+           placeholder="School Name" required="" autocomplete="off">
+
+        <!-- what hardware items are you interested in renting? -->
         <div id="inputTitle">
           What hardware would you be interested in renting?
         </div>
         <input type="text" id="inputHardware" class="form-control"
-          placeholder="Ex: Android phone, Rifts, Laptops, HoloLens, Arduino or Other" required=""
-          autocomplete="off" />
-      </div>
-      <div>
+           placeholder="Ex: Android phone, Rifts, Laptops, HoloLens, Arduino or Other" required="" autocomplete="off">
+  
+        <!-- Apt or Box -->
         <div id="inputTitle">
           Apartment# or Box# (if you have one)
         </div>
         <input type="text" id="inputAptBox" class="form-control"
-          placeholder="Apartment 26 or Box 72762" autocomplete="off" />
-      </div>
+           placeholder="Apartment 26 or Box 72762" autocomplete="off">
 
-      <div>
+        <!-- Address -->
         <div id="inputTitle">Address</div>
         <input type="text" id="inputAddress" class="form-control"
-          placeholder="Your address" required="" autocomplete="off" />
-      </div>
+           placeholder="Your address" required="" autocomplete="off">
 
-      <div>
+        <!-- City -->
         <div id="inputTitle">City</div>
         <input type="text" id="inputCity" class="form-control"
-          placeholder="City" required="" autocomplete="off" />
-      </div>
+           placeholder="City" required="" autocomplete="off">
 
-      <div>
+        <!-- State -->
         <div id="inputTitle">State</div>
         <input type="text" id="inputState" class="form-control"
-          placeholder="State" required="" autocomplete="off" />
-      </div>
+           placeholder="State" required="" autocomplete="off">
 
-      <div>
+        <!-- Zip code -->
         <div id="inputTitle">Zip Code</div>
         <input type="text" id="inputZipCode" class="form-control"
-          placeholder="Zip Code" required="" autocomplete="off" />
-      </div>
-      
-      <!-- Gender identify -->
-      <div id="inputGender">
-        <div id="inputTitle">Gender</div>
-        <input type="radio" name="sex" value="Male" autocomplete="off">Male<br>
-        <input type="radio" name="sex" value="Female"
-                                       autocomplete="off">Female<br>
-        <input type="radio" name="sex" value="Other" autocomplete="off">Other
-      </div>
-      <div>
+           placeholder="Zip Code" required="" autocomplete="off">
+
+        <!-- Gender identify -->
+        <div id="inputGender">
+          <div id="inputTitle">Gender</div><br>
+          <input type="radio" name="sex" value="Male" autocomplete="off">Male<br>
+          <input type="radio" name="sex" value="Female"
+             autocomplete="off">Female<br>
+           <input type="radio" name="sex" value="Other" autocomplete="off">Other
+        </div>
+  
+        <!-- Age -->
         <div id="inputTitle">Age</div>
         <input type="text" id="inputAge" class="form-control" placeholder="Age" 
-          required="" autocomplete="off" />
-      </div>
+           required="" autocomplete="off">
 
-      <div>
+        <!-- Edu -->
         <div id="inputTitle">Education Level</div>
         <input type="text" id="inputEduLvl" class="form-control"
-          placeholder="Education Level" required="" autocomplete="off" />
-      </div>
+           placeholder="Education Level" required="" autocomplete="off">
 
-      <!-- check for terms -->
-    </form>
-    <div id="btn">
-      <button class="button" id="btnSubmit">Submit</button>
+        <!-- check for terms -->
+        <div id="btn">
+          <input type="submit" class="button" id="button" value="Submit">
+        </div>
+      </form>
     </div>
-  </div>
-  <script src="js/register.js"></script>
+    <script src="js/register.js"></script>
   </body>
 </html>

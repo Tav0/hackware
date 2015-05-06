@@ -56,20 +56,20 @@
         <div class="popupBoxWrapper">
           <form class="login-form">
             <i class="fa fa-times" id="x"></i>
-            </a>
             <h3><center>Sign In!</center></h3>
             <div class="error" style="display:none"></div>
             <div class="popuptext">
+              <!-- email -->
               <input type="text" name="username" class="form-control 
-              loginEmail" id="emailid" autocomplete="off"
-                                       placeholder="Enter Email">
-
+                loginEmail" id="emailid" required=""autocomplete="off"
+                placeholder="Enter Email">
+              <!-- pass -->
               <input type="password" name="password" class="form-control
-              loginEmail" id="passid" autocomplete="off" 
-                                      placeholder="Enter Password">
+                loginEmail" id="passid" required=""autocomplete="off" 
+                placeholder="Enter Password">
             </div>
-            <button type="button" class="button" id="button">Submit</button>
-            <p>Didn't sign up yet? No problem! Make an account 
+            <input type="submit" class="button" id="button">
+            <p id="loginBox">Didn't sign up yet? No problem! Make an account 
             <a href="register.html">here</a>!</p>
           </form>
         </div>
@@ -178,108 +178,6 @@
     </div>
     <a href="#sponsors" class="goto-next scrolly">Next</a>
   </section>
-
-  <!-- Three -->
-  <section id="sponsors" class="wrapper style1 special fade-up">
-    <div class="container">
-      <header class="major">
-        <h2>Donors</h2>
-        <p>Thanks to them we can let hackers around the world create
-        awesome hacks!</p>
-      </header>
-      <div class="box alt">
-        <div class="row uniform">
-          <section class="6u 6u(medium) 12u$(xsmall)">
-            <span class="icon alt major">
-              <a href="https://getpebble.com">
-                <img id="partner-logo-whitebg" src="images/logos/pebble.svg" />
-              </a>
-            </span>
-            <h3>
-              <a id="logo-link" href="https://getpebble.com">Pebble</a>
-            </h3>
-            <!--  <p>Donor 1</p> -->
-          </section>
-          <section class="6u 6u$(medium) 12u$(xsmall)">
-            <span class="icon alt major">
-              <a href="https://www.thalmic.com">
-                <img id="partner-logo-whitebg"
-                     src="images/logos/thalmic_labs.png" /></a>
-            </span>
-            <h3>
-              <a id="logo-link" href="https://www.thalmic.com">Thalmic
-                Labs</a>
-            </h3>
-            <!--  <p>Donor 2</p> -->
-          </section>
-        </div>
-        <br>
-        <div class="container">
-          <header class="major">
-            <h2>Partners</h2>
-            <p>These are our partners, for without them we wouldn't have any
-            venue to make ourselves known.</p>
-          </header>
-          <div class="box alt">
-            <div class="row uniform"> 
-              <section class="4u 6u(medium) 12u$(xsmall)">
-                <span class="icon alt major">
-                  <a href="http://pearlhacks.com">
-                    <img id="partner-logo-transparent"
-                         src="images/logos/pearl_hacks.png" />
-                  </a>
-                </span>
-                <h3>
-                  <a id="logo-link" href="http://pearlhacks.com">Pearl Hacks</a>
-                </h3>
-                <p>March 21 - 22, 2015</p>
-              </section>
-              <section class="4u 6u(medium) 12u$(xsmall)">
-                <span class="icon alt major">
-                  <a href="http://raspberryjam.hacknc.com">
-                    <img id="partner-logo-whitebg"
-                         src="images/logos/raspberry_jam.png" />
-                  </a>
-                </span>
-                <h3>
-                  <a id="logo-link" href="http://raspberryjam.hacknc.com">Raspberry Jam</a>
-                </h3>
-                <p>March 28, 2015</p>
-              </section>   
-              <section class="4u$ 6u$(medium) 12u$(xsmall)">
-                <span class="icon alt major">
-                  <a href="http://hackpsu.org">
-                    <img id="partner-logo" src="images/logos/hackpsu.png" />
-                  </a>
-                </span>
-                <h3>
-                  <a id="logo-link" href="http://hackpsu.org">HackPSU</a>
-                </h3>
-                <p>March 28 - 29, 2015</p>
-              </section>
-              <section class="6u 6u(medium) 12u$(xsmall)">
-                <span class="icon alt major">
-                  <a href="https://bitca.mp">
-                    <img id="partner-logo" src="images/logos/bitcamp.svg" />
-                  </a>
-                </span>
-                <h3>
-                  <a id="logo-link" href="https://bitca.mp">Bitcamp</a>
-                </h3>
-                <p>April 10 - 12, 2015</p>
-              </section>
-              <section class="6u$ 6u$(medium) 12u$(xsmall)">
-                <span class="icon alt major">
-                  <a href="http://hackru.org">
-                    <img id="partner-logo-transparent"
-                         src="images/logos/hackru.png" />
-                  </a>
-                </span>
-                <h3>
-                  <a id="logo-link" href="http://hackru.org">HackRU</a>
-                </h3>
-                <p>April 18 - 19, 2015</p>
-              </section>
     <!-- Three -->
     <section id="sponsors" class="wrapper style1 special fade-up">
       <div class="container">
