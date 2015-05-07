@@ -1,16 +1,28 @@
 <html>
 
+<head>
+<link rel="stylesheet" href="css/bootstrap.css">    
+</head>
 
-<select id="item" >
-
-</select>
-
-<!-- dropdown for how many -->
-<select id="quantity">
-<option value="nothing">Select how many...</option>
-</select>
-
-
+    <style>
+    body{
+    background-color:#272833;
+    }
+        
+    p{
+    color: #ffffff;
+    }
+    
+    h1{
+    color: #49b848;
+    }
+        
+    #main{
+        padding: 20%;
+    }
+    
+    </style>
+    
 
 
 <script src="https://www.parsecdn.com/js/parse-1.3.4.min.js"></script>
@@ -46,9 +58,26 @@ query.find({
 });
 
   </script>
+    
+    
+<body>
+<div id = "main">  
+    
+    <h1>Welcome to our ordering screen</h1>
+    <p>pen</p>
+    
+<select id="item" >
 
+</select>
 
-
-
-
+<!-- dropdown for how many -->
+<select id="quantity">
+<option value="nothing">Select how many...</option>
+</select>
+    
+</div>
+    
+    
+</body>
+    
 </html>
