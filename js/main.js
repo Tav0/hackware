@@ -1,14 +1,3 @@
-/*$(document).ready(function() {     
-  $.ajax({
-  type:"GET",
-  url:'https://jsonp.nodejitsu.com/?url=https%3A%2F%2Fapi.typeform.com%2Fv0%2Fform%2FCNOtal%3Fkey%3D26e72de2fd4681337e33d1e2b333947a7d5d31bc%26completed%3Dtrue',
-  success: function(formData){
-  console.log('success');
-  console.log(formData.responses[0].answers);
-  }   
-  });
-  }); */
-
 $(document).ready(function() {     
   $.ajax({
     type:"GET",
@@ -63,10 +52,17 @@ $(document).ready(function() {
         console.log("saved");
       },
       error: function(newUser, err) {
-        console.log("Error: " + err.code + " " + err.message);
+			//console.log("Error: " + err.code + " " + err.message);
       }
     });
   }
   });
+  
+  checkout(){
+	  alert(1);
+	  
+  }
+  
+  
 })
     
