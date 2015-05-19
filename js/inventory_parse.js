@@ -25,7 +25,7 @@ var count = 1;
 	var p = results[O].get('Available');
 	var text="Get this one!";
 	$("#hovertable").append(
-            "<tr class=element>"+
+            "<tr data-value=\"" + t + "\" class=element>"+
 			"<td>"+count+"</td>"+
 			"<td>"+
             "<a href=\"checkout.html\" onclick=\"checkout()\">" +t+"</a>"+
@@ -47,7 +47,7 @@ var count = 1;
 function checkout(){
   
 
-  alert("asdfsdf");
+  alert($('tr').val());
 
   
 }
