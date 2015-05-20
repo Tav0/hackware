@@ -46,8 +46,9 @@ var count = 1;
 
 function checkout(){
   
-
-  alert($('tr').val());
+alert($(this).attr("value"));
+  alert($('tr').val);
+  alert("1");
 
   
 }
