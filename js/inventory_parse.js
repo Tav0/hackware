@@ -46,17 +46,8 @@ var count = 1;
 	
 
 function checkout(){
-<<<<<<< HEAD
   $("#hovertable").on('click','tr',function(e){
     var id = $(this).attr('value');
     alert(id);
   });
-=======
-  
-alert($(this).attr("value"));
-  alert($('tr').val);
-  alert("1");
-
-  
->>>>>>> 068438b3563e5ad6c425e33ac14280ae580e6024
 }
