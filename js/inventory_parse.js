@@ -1,4 +1,5 @@
- Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");    
+ Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", 
+     "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");    
 var Hardware = Parse.Object.extend("HW");
 var query = new Parse.Query(Hardware);
 query.ascending("Name");
@@ -25,7 +26,7 @@ var count = 1;
 	var p = results[O].get('Available');
 	var text="Get this one!";
 	$("#hovertable").append(
-            "<tr data-value=\"" + t + "\" class=element>"+
+            "<tr value=\"" + t + "\" class=element>"+
 			"<td>"+count+"</td>"+
 			"<td>"+
             "<a href=\"checkout.html\" onclick=\"checkout()\">" +t+"</a>"+
@@ -45,9 +46,8 @@ var count = 1;
 	
 
 function checkout(){
-  
-
-  alert($('tr').val());
-
-  
+  $("#hovertable").on('click','tr',function(e){
+    var id = $(this).attr('value');
+    alert(id);
+  });
 }
