@@ -12,25 +12,99 @@
   <link rel="stylesheet" type="text/css" href="css/inventory.css" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script src="https://checkout.stripe.com/checkout.js"></script>
 
 </head>
 
 <body>
   <div id="container">
-    <h1>Rental checkout</h1>
-    <form id="frm">
-      First Name :<input type="text" id="firstname">
-      <br/>
-      Last Name :<input type="text" id="lastname">
-      <br/>
-      Phone Number :<input type="text" id="phone">
-      <br/>
-      Item # : <input type="text" id="item1" min="1" step="1">
-    </form>
-    <button class="button" id="btn1" >one more item</button>
-    <br/>
-    <button class="button" id="btn2">submit</button>
+    <h1>Rental checkout</h1><form action="" method="POST">
+  <!--<script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_BykiGXRnfAcHt4zD9DR6sPAr"
+    data-amount="2000"
+    data-name="Demo Site"
+    data-description="2 widgets ($20.00)"
+    data-image="/128x128.png">
+  </script>
+</form>-->
 
+
+<!-- TODO: get the name of the item clicked on previous page. use that name to search the parse db for the first item that matches that name that is still available for rent. get the price and set that to a var to be used in -->
+ <form action="/" method="post" id="example-form" style="display: none;">
+
+            <div class="form-row">
+                <label for="name" class="stripeLabel">Your Name</label>
+                <input type="text" name="name" class="required" />
+            </div>            
+    
+            <div class="form-row">
+                <label for="email">E-mail Address</label>
+                <input type="text" name="email" class="required" />
+            </div>            
+    
+            <div class="form-row">
+                <label>Card Number</label>
+                <input type="text" maxlength="20" autocomplete="off" class="card-number stripe-sensitive required" />
+            </div>
+            
+            <div class="form-row">
+                <label>CVC</label>
+                <input type="text" maxlength="4" autocomplete="off" class="card-cvc stripe-sensitive required" />
+            </div>
+            
+            <div class="form-row">
+                <label>Expiration</label>
+                <div class="expiry-wrapper">
+                    <select class="card-expiry-month stripe-sensitive required">
+                    </select>
+                    <script type="text/javascript">
+                        var select = $(".card-expiry-month"),
+                            month = new Date().getMonth() + 1;
+                        for (var i = 1; i <= 12; i++) {
+                            select.append($("<option value='"+i+"' "+(month === i ? "selected" : "")+">"+i+"</option>"))
+                        }
+                    </script>
+                    <span> / </span>
+                    <select class="card-expiry-year stripe-sensitive required"></select>
+                    <script type="text/javascript">
+                        var select = $(".card-expiry-year"),
+                            year = new Date().getFullYear();
+
+                        for (var i = 0; i < 12; i++) {
+                            select.append($("<option value='"+(i + year)+"' "+(i === 0 ? "selected" : "")+">"+(i + year)+"</option>"))
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <button type="submit" name="submit-button">Submit</button>
+</form>
+<script>
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_BykiGXRnfAcHt4zD9DR6sPAr',
+    image: '/img/documentation/checkout/marketplace.png',
+    token: function(token) {
+      // Use the token to create the charge with a server-side script.
+      // You can access the token ID with `token.id`
+    }
+  });
+
+  $('#submit').on('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: 'Demo Site',
+      description: '2 widgets',
+      amount: 2000
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    handler.close();
+  });
+</script>
     
 
   </body>
