@@ -13,6 +13,7 @@
   <link rel="stylesheet" type="text/css" href="css/style.css" />
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script src="https://checkout.stripe.com/checkout.js"></script>
+ <script src="js/jstorage.min.js"></script>
 
 </head>
 
@@ -32,7 +33,8 @@
 
 <!-- TODO: get the name of the item clicked on previous page. use that name to search the parse db for the first item that matches that name that is still available for rent. get the price and set that to a var to be used in -->
  <form action="/" method="post" id="example-form" style="display: none;">
-
+			<p id="itemname"></p>
+			<p id="itemprice"></p>
             <div class="form-row">
                 <label for="name" class="stripeLabel">Your Name</label>
                 <input type="text" name="name" class="required" />
@@ -81,6 +83,36 @@
             <button type="submit" name="submit-button">Submit</button>
 </form>
 <script>
+
+var temp =$.jStorage.get("item");
+//alert("this is the checkout page, and I just got this item: " +temp);
+document.getElementById("itemname").innerHTML = temp;
+
+
+
+//TODO parse request to get item (id, price, etc.) and to mark it as rented if successful
+
+
+Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", 
+     "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");    
+var Hardware = Parse.Object.extend("Hardware");
+var query = new Parse.Query(Hardware);
+query.ascending("Name");
+query.equalTo("Name",temp);
+query.equalTo("rented",false);
+query.find({
+  success: function(results) {
+    // Successfully retrieved the object.
+	//alert("found this item: " + results[0].get("Name"));
+	document.getElementById("itemprice").innerHTML = "$"+results[0].get("Price");
+  },
+  error: function(error) {
+    alert("Error: " + error.code + " " + error.message);
+  }
+});
+
+
+/*
   var handler = StripeCheckout.configure({
     key: 'pk_test_BykiGXRnfAcHt4zD9DR6sPAr',
     image: '/img/documentation/checkout/marketplace.png',
@@ -104,6 +136,7 @@
   $(window).on('popstate', function() {
     handler.close();
   });
+  */
 </script>
     
 
