@@ -14,7 +14,7 @@
     <script src="js/jstorage.min.js"></script>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script type="text/javascript">
-      Stripe.setPublishableKey('YOUR_PUBLISHABLE_KEY');
+      Stripe.setPublishableKey('pk_test_Z5GLMwFTwd9TUvq6Pp1ds4dg');
 
       Stripe.card.createToken({
           number: $('.card-number').val(),
@@ -115,9 +115,17 @@
         success: function(results) {
           // Successfully retrieved the object.
           //alert("found this item: " + results[0].get("Name"));
+		  
+		  if(results[0].get("RentalPrice")==0){
+		  document.getElementById("itemprice").innerHTML = "Only available at hackathons";
+		  }
+		  else{
+		  
+		  
           document.getElementById("itemprice").innerHTML =
-            "$"+results[0].get("Name");
-        },
+            "$"+results[0].get("RentalPrice");
+        }
+		},
         error: function(error) {
           alert("Error: " + error.code + " " + error.message);
         }

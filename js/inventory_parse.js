@@ -48,6 +48,8 @@ var count = 1;
 function checkout(){
   $("#hovertable").on('click','tr',function(e){
     var id = $(this).attr('value');
-    alert(id);
+   // alert(id);
+	//instead of alerting, we need to move this into the local storage
+	$.jStorage.set("item", id);
   });
 }
