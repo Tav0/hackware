@@ -29,7 +29,7 @@ var count = 1;
             "<tr value=\"" + t + "\" class=element>"+
 			"<td>"+count+"</td>"+
 			"<td>"+
-            "<a href=\"checkout.html\" onclick=\"checkout()\">" +t+"</a>"+
+            "<a href=\"hackware/checkout.html\" onclick=\"checkout()\">" +t+"</a>"+
             "</td><td>"+
             r+
             "</td><td>"+
