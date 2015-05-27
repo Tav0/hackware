@@ -68,6 +68,7 @@
       } 
       $(document).ready(function() {
         $("#payment-form").submit(function(event) {
+          console.log("hi");
           // disable the submit button to prevent repeated clicks
           $('.submit-button').attr('disabled', 'disabled');
           // amount you want to charge, in cents. 1000 = $10.00, 2000 = $20.00 
