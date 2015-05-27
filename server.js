@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 // POST http://localhost:8080/api/users
 // parameters sent with 
-app.post('/', function(req, res) {
-  var user_id = req.body.id;
+app.post('/hackware', function(req, res) {
+  var cardN = req.body.
   var token = req.body.token;
   var geo = req.body.geo;
 
