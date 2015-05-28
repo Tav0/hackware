@@ -8,11 +8,10 @@ var port = process.env.PORT || 8080;
 // routes will go here
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-  console.log("jeroenisgay");
 
 // POST http://localhost:8080/api/users
 // parameters sent with 
-app.post('/hackware', function(req, res) {
+app.post('/checkout', function(req, res) {
   var email = req.body.email;
   var stripeToken = req.body.stripeToken;
   

@@ -15,6 +15,7 @@
                                type="image/png"/>
 
   <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+  <script src="js/parse-1.3.4.min.js"></script>
 
   <script src="js/jquery-2.1.3.min.js"></script>
   <script src="js/jquery.scrolly.min.js"></script>
@@ -32,20 +33,43 @@
   </noscript>
   <!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
   <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+  <script>Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r",
+        "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");</script>
+  
+  
 </head>
 
 <body class="landing">
   <!-- Header -->
   <header id="header"> <h1 id="logo">
       <a href="index.html">HackWare</a></h1> 
+	  
+	  
     <nav id="nav"> 
       <ul>
         <li><a href="index.html">Home</a></li> 
         <li><a href="inventory.html">Inventory</a></li> 
         <li><a href="payment.html">Payment</a></li>
-        <li><a href="#" id="logging">Sign In</a></li>
       </ul>
     </nav>
+	<script>
+$(document).ready(function(){
+
+var currentUser = Parse.User.current();
+if (currentUser) {
+	        $("ul").append("<li><a onclick=logout() href=\"\" id=\"logout\">Log out</a></li>");
+} else {
+	        $("ul").append("<li><a href=\"\" id=\"logging\">Sign In</a></li>");
+}
+});
+	function logout(){
+	Parse.User.logOut();
+	console.log("clicked");
+};
+
+	</script>
+	
+	
   </header>
 
   <!-- Banner -->
@@ -61,11 +85,11 @@
             <div class="popuptext">
               <!-- email -->
               <input type="text" name="username" class="form-control 
-                loginEmail" id="emailid" required=""autocomplete="off"
+                loginEmail" id="emailid" required=""autocomplete="on"
                 placeholder="Enter Email">
               <!-- pass -->
               <input type="password" name="password" class="form-control
-                loginEmail" id="passid" required=""autocomplete="off" 
+                loginEmail" id="passid" required=""autocomplete="on" 
                 placeholder="Enter Password">
             </div>
             <input type="submit" class="button" id="button">
@@ -143,13 +167,7 @@
           value. Once you have paid us for the rental items, we will ship
           it to you in a flat rate box with return postage. At the end of
           your 1-week rental period, simply send everything back.</p>
-          <!-- <p>We offer various <a href="cost.html">rental prices</a> based on delivery speed and
-            shipping insurance. This lets you choose how fast the hardware gets
-            to you! We will also open a credit card authorization for the full
-            retail value of all items you rent. If you return all items on time
-            and in the same condition as when we sent them to you, we will not
-            charge you anything. This would be like getting a hotel room and
-            taking care of it.</p> -->
+        
         </div>
         <div class="6u 10u$(medium)">
           <h2>What if you break or keep hardware?</h2>
@@ -312,8 +330,6 @@
                 href="https://www.facebook.com/pages/HackWare/426489770840939" 
                 class="icon alt fa-facebook">
           <span class="label">Facebook</span></a></li>
-      <!-- <li><a href="#" class="icon alt fa-instagram">
-        <span class="label">Instagram</span></a></li> -->
     <li><a href="mailto:admin@hackware.io" class="icon alt fa-envelope">
         <span class="label">Email</span></a></li>
     </ul>
@@ -324,6 +340,5 @@
   </footer>
   <script src="js/login.js"></script>
   <script src="js/popup.js"></script>
-  <script src="js/parse-1.3.4.min.js"></script>
 </body>
 </html>
