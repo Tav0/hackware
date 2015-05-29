@@ -14,7 +14,6 @@ app.use(methodOverride());
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-<<<<<<< HEAD
 app.use(express.static(publicDir));
 app.use(errorHandler({
     dumpExceptions: true,
@@ -36,14 +35,6 @@ app.post('/checkout', function(req, res) {
       stripeToken = req.body.stripeToken,
       price = parseInt(req.body.itemPrice) * 100;
   //creates customer
-=======
-// POST http://localhost:8080/api/users
-// parameters sent with 
-app.post('/checkout', function(req, res) {
-  var email = req.body.email;
-  var stripeToken = req.body.stripeToken;
-  
->>>>>>> ae1e576ddaa025eb8b4dcfdfe2e7eea1684dd3ee
   stripe.customers.create({
     source: stripeToken,
     email: email,
