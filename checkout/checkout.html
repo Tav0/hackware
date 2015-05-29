@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" href="images/hackware_icon.png"
+    <link rel="shortcut icon" href="../images/hackware_icon.png"
                               type="image/png"/>
     <title>HackWare Hardware Rental</title>
     <script src="../js/parse-1.3.4.min.js"></script>
@@ -12,13 +12,13 @@
     <script src="../js/jstorage.min.js"></script>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script type="text/javascript">
-      var itemPrice = "Only available at hackathons."
-      $(window).load(function() {
-        var itemName = $.jStorage.get("item");
-            
+      var itemPrice = "Only available at hackathons.",
+          itemName = $.jStorage.get("item");
+      $(window).load(function() {        
         //alert("this is the checkout page, and I just got this item: " +
         //itemName);
         document.getElementById("itemname").innerHTML = itemName;
+        document.getElementById("iName").value = itemName;
 
         //TODO parse request to get item (id, price, etc.) and to mark it as 
         //rented if successful
@@ -38,6 +38,7 @@
 	    }else{
               itemPrice = results[0].get("RentalPrice");
               document.getElementById("itemprice").innerHTML = "$"+ itemPrice;
+              document.getElementById("iPrice").value = itemPrice;
             }
           },
           error: function(error) {
@@ -55,9 +56,14 @@
         name to search the parse db for the first item that matches that name 
         that is still available for rent. get the price and set that to a var 
         to be used in -->
-      <form action="/server.js" method="POST" id="payment-form">
+      <form action="/checkout" method="POST" id="payment-form">
+
         <h4 id="itemname"></h4>
+        <input type="hidden" name="itemName" id="iName" />
+        
         <h4 id="itemprice"></h4>
+        <input type="hidden" name="itemPrice" id="iPrice" />
+
         <div class="form-row">
           <label for="name" class="stripeLabel">Your Name</label>
           <input type="text" name="name" class="required" />
@@ -106,7 +112,7 @@
             </script>
           </div>
         </div>
-        <input type="button" class="submit-button" value="Submit">
+        <input type="submit" class="submit-button" value="Submit">
         <div class="payment-errors"></div>
       </form>
     </div>
