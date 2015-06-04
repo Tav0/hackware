@@ -43,8 +43,8 @@
   <!-- Header -->
   <header id="header"> <h1 id="logo">
       <a href="index.html">HackWare</a></h1> 
-	  
-	  
+    
+    
     <nav id="nav"> 
       <ul>
         <li><a href="index.html">Home</a></li> 
@@ -52,24 +52,24 @@
         <li><a href="payment.html">Payment</a></li>
       </ul>
     </nav>
-	<script>
+  <script>
 $(document).ready(function(){
 
 var currentUser = Parse.User.current();
 if (currentUser) {
-	        $("ul").append("<li><a onclick=logout() href=\"\" id=\"logout\">Log out</a></li>");
+          $("ul").append("<li><a onclick=logout() href=\"\" id=\"logout\">Log out</a></li>");
 } else {
-	        $("ul").append("<li><a href=\"\" id=\"logging\">Sign In</a></li>");
+          $("ul").append("<li><a href=\"\" id=\"logging\">Sign In</a></li>");
 }
 });
-	function logout(){
-	Parse.User.logOut();
-	console.log("clicked");
+  function logout(){
+  Parse.User.logOut();
+  console.log("clicked");
 };
 
-	</script>
-	
-	
+  </script>
+  
+  
   </header>
 
   <!-- Banner -->
@@ -274,7 +274,7 @@ if (currentUser) {
                   </h3>
                   <p>March 28 - 29, 2015</p>
                 </section>
-                <section class="6u 6u(medium) 12u$(xsmall)">
+                <section class="4u 6u(medium) 12u$(xsmall)">
                   <span class="icon alt major">
                     <a href="https://bitca.mp">
                       <img id="partner-logo" src="images/logos/bitcamp.svg" />
@@ -285,7 +285,7 @@ if (currentUser) {
                   </h3>
                   <p>April 10 - 12, 2015</p>
                 </section>
-                <section class="6u$ 6u$(medium) 12u$(xsmall)">
+                <section class="4u 6u(medium) 12u$(xsmall)">
                   <span class="icon alt major">
                     <a href="http://hackru.org">
                       <img id="partner-logo-transparent"
@@ -296,6 +296,18 @@ if (currentUser) {
                     <a id="logo-link" href="http://hackru.org">HackRU</a>
                   </h3>
                   <p>April 18 - 19, 2015</p>
+                </section>
+                <section class="4u$ 6u$(medium) 12u$(xsmall)">
+                  <span class="icon alt major">
+                    <a href="https://codeday.org">
+                      <img id="partner-logo-transparent"
+                      src="images/logos/codeday.png" />
+                    </a>
+                  </span>
+                  <h3>
+                    <a id="logo-link" href="https://codeday.org">CodeDay DC</a>
+                  </h3>
+                  <p>May 30 - 31, 2015</p>
                 </section>
               </div>
             </div>
