@@ -9,6 +9,15 @@ var stripe = require("stripe")("sk_test_kGOh10LZ0WOuswOg6tZIAISK"),
     port = parseInt(process.env.PORT, 10) || 4567,
     publicDir = process.argv[2] || __dirname + '/';
 
+console.log(process.argv[0]);
+console.log(process.argv[1]);
+console.log(process.argv[2]);
+
+//gets index file
+app.get('/', function(req, res) {
+  res.redirect("/index.html");
+});
+
 app.use(methodOverride());
 /// routes will go here
 app.use(bodyParser.json()); // support json encoded bodies
@@ -20,15 +29,10 @@ app.use(errorHandler({
     showStack: true
 }));
 
-//gets index file
-app.get('/', function(req, res) {
-  res.redirect("/");
-});
-
 // POST http://localhost:port
 // parameters sent with
 
-app.post('/checkout', function(req, res) {
+app.post('/payment', function(req, res) {
   var email = req.body.email,
       rentedInfo = req.body.name + " purchased: " + req.body.itemName +
         " for $" + req.body.itemPrice,
@@ -53,5 +57,6 @@ app.post('/checkout', function(req, res) {
 });
 
 // start the server
-console.log("Simple static server showing \n %s listening at http://%s:%s", publicDir, hostname, port);
+console.log("Simple static server showing \n %s listening at http://%s:%s",
+ publicDir, hostname, port);
 app.listen(port, hostname);
