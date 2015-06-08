@@ -46,10 +46,10 @@
     
     
     <nav id="nav"> 
-      <ul>
+      <ul id="lis">
         <li><a href="index.html">Home</a></li> 
         <li><a href="inventory.html">Inventory</a></li> 
-        <li><a href="payment.html">Payment</a></li>
+        <li><a href="rentables.html">Rentables</a></li>
       </ul>
     </nav>
   <script>
@@ -57,9 +57,9 @@ $(document).ready(function(){
 
 var currentUser = Parse.User.current();
 if (currentUser) {
-          $("ul").append("<li><a onclick=logout() href=\"\" id=\"logout\">Log out</a></li>");
+          $("#lis").append("<li><a onclick=logout() href=\"\" id=\"logout\">Log out</a></li>");
 } else {
-          $("ul").append("<li><a href=\"\" id=\"logging\">Sign In</a></li>");
+          $("#lis").append("<li><a href=\"\" id=\"logging\">Sign In</a></li>");
 }
 });
   function logout(){
