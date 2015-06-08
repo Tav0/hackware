@@ -1,5 +1,6 @@
 // grab the packages we need
-var stripe = require("stripe")("sk_test_kGOh10LZ0WOuswOg6tZIAISK"),
+var stripe = require("stripe")("sk_live_nDhWREOk6VbBFDsEg6UPLCYw"),
+    //stripe = require("stripe")("sk_test_kGOh10LZ0WOuswOg6tZIAISK"),
     express = require("express"),
     app = express(),
     bodyParser = require('body-parser'),
