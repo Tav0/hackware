@@ -1,5 +1,11 @@
 // grab the packages we need
-var stripe = require("stripe")("sk_test_kGOh10LZ0WOuswOg6tZIAISK"),
+
+//sk_live_nDhWREOk6VbBFDsEg6UPLCYw is the live key
+//sk_test_kGOh10LZ0WOuswOg6tZIAISK is the test key
+
+//current status: LIVE
+
+var stripe = require("stripe")("sk_live_nDhWREOk6VbBFDsEg6UPLCYw "),
     express = require("express"),
     app = express(),
     bodyParser = require('body-parser'),
@@ -51,6 +57,13 @@ app.post('/payment', function(req, res) {
     });
   }).then(function(charge) {
     saveStripeCustomerId(user, charge.customer);
+	
+	// create parse rental item 
+	
+	
+	
+	
+	
   });
     console.log(rentedInfo);
     res.send(rentedInfo);
