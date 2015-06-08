@@ -105,6 +105,7 @@ app.post('/payment', function(req, res) {
 var Rental = Parse.Object.extend("Rental");
 var rental = new Rental();
 
+rental.set("User",Parse.User.current());
 rental.set("Name", req.body.name);
 rental.set("Item", itemID);
 rental.set("Price", req.body.itemPrice);
