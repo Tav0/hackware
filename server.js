@@ -1,20 +1,13 @@
 // grab the packages we need
-<<<<<<< HEAD
-var stripe = require("stripe")("sk_live_nDhWREOk6VbBFDsEg6UPLCYw"),
-    //stripe = require("stripe")("sk_test_kGOh10LZ0WOuswOg6tZIAISK"),
-=======
-
 //sk_live_nDhWREOk6VbBFDsEg6UPLCYw is the live key
 //sk_test_kGOh10LZ0WOuswOg6tZIAISK is the test key
 
 //current status: LIVE
 var Parse = require('parse').Parse;
 Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", 
-"GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");
-
+    "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");
 
 var stripe = require("stripe")("sk_live_nDhWREOk6VbBFDsEg6UPLCYw "),
->>>>>>> 7cfba17e332df3a2e4e2cd3b1dc5a06488df40f6
     express = require("express"),
     app = express(),
     bodyParser = require('body-parser'),
@@ -40,8 +33,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.use(express.static(publicDir));
 app.use(errorHandler({
-    dumpExceptions: true,
-    showStack: true
+  dumpExceptions: true,
+  showStack: true
 }));
 
 // POST http://localhost:port
@@ -49,10 +42,10 @@ app.use(errorHandler({
 
 app.post('/payment', function(req, res) {
   var email = req.body.email,
-      rentedInfo = req.body.name + " purchased: " + req.body.itemName +
-        " for $" + req.body.itemPrice,
-      stripeToken = req.body.stripeToken,
-      price = parseInt(req.body.itemPrice) * 100;
+  rentedInfo = req.body.name + " purchased: " + req.body.itemName +
+    " for $" + req.body.itemPrice,
+  stripeToken = req.body.stripeToken,
+  price = parseInt(req.body.itemPrice) * 100;
   //creates customer
   stripe.customers.create({
     source: stripeToken,
@@ -66,76 +59,76 @@ app.post('/payment', function(req, res) {
     });
   }).then(function(charge) {
     saveStripeCustomerId(user, charge.customer);
-	
-	
-	
-	//------------------------------------------------------------
-	//Parse stuff
-	//------------------------------------------------------------
-	
-	var itemID = null;
-	//get the first item that matches the description:
-	var query = new Parse.Query("HardWare");
-	query.equalTo("Name", req.body.itemName);//needs to match the name
-	query.equalTo("Rented",false);//needs to be unrented
-	query.find({
-		success: function(results) {
-			itemID=results[0];
-			results[0].set("Rented",true);//set the item as rented and continue.
-			
-				var query = new Parse.Query("HW");
-	query.equalTo("Name", req.body.itemName);//needs to match the name
-	query.find({
-		success: function(results) {
-			//decrement the number of available items
-			var newamount = results[0].get("Available") - 1;
-			results[0].set("Available", newamount);
-		},
-		error: function(error) {
-			//nothing to do here.... it should always return the item
-		}
-	});
-		},
-		error: function(error) {
-			//TODO do something here to alert the user, or just put them in the queue...
-			
-			
-		}
-	});
-	
-	if(itemID!=null){
-		
-	// create parse rental item 
-	
-var Rental = Parse.Object.extend("Rental");
-var rental = new Rental();
 
-rental.set("User",Parse.User.current());
-rental.set("Name", req.body.name);
-rental.set("Item", itemID);
-rental.set("Price", req.body.itemPrice);
-rental.set("Returned", false);
-//rental.set("Adres",adres); //TODO this needs to be implemented on the form first before I can get the values and store them
 
-rental.save(null, {
-  success: function(rental) {
-   
-	  //don't need to do anything else once it's saved...
-  },
-  error: function(rental, error) {
-   alert("unable to save object");//TODO something here, don't know what
-  }
-});
 
-	}
-	
-	
+    //------------------------------------------------------------
+    //Parse stuff
+    //------------------------------------------------------------
+
+    var itemID = null;
+    //get the first item that matches the description:
+    var query = new Parse.Query("HardWare");
+    query.equalTo("Name", req.body.itemName);//needs to match the name
+    query.equalTo("Rented",false);//needs to be unrented
+    query.find({
+      success: function(results) {
+        itemID=results[0];
+        results[0].set("Rented",true);//set the item as rented and continue.
+
+        var query = new Parse.Query("HW");
+        query.equalTo("Name", req.body.itemName);//needs to match the name
+        query.find({
+          success: function(results) {
+            //decrement the number of available items
+            var newamount = results[0].get("Available") - 1;
+            results[0].set("Available", newamount);
+          },
+          error: function(error) {
+            //nothing to do here.... it should always return the item
+          }
+        });
+      },
+      error: function(error) {
+        //TODO do something here to alert the user, or just put them in the queue...
+
+
+      }
+    });
+
+    if(itemID!=null){
+
+      // create parse rental item 
+
+      var Rental = Parse.Object.extend("Rental");
+      var rental = new Rental();
+
+      rental.set("User",Parse.User.current());
+      rental.set("Name", req.body.name);
+      rental.set("Item", itemID);
+      rental.set("Price", req.body.itemPrice);
+      rental.set("Returned", false);
+      //rental.set("Adres",adres); //TODO this needs to be implemented on the form first before I can get the values and store them
+
+      rental.save(null, {
+        success: function(rental) {
+
+          //don't need to do anything else once it's saved...
+        },
+        error: function(rental, error) {
+          alert("unable to save object");//TODO something here, don't know what
+        }
+      });
+
+    }
+
+
   });
-    console.log(rentedInfo);
-    res.send(rentedInfo);
+  console.log(rentedInfo);
+  res.send(rentedInfo);
 });
 
 // start the server
 console.log("Simple static server showing \n %s listening at http://%s:%s",
- publicDir, hostname, port);
+    publicDir, hostname, port);
 app.listen(port, hostname);
