@@ -36,3 +36,6 @@ stripe.charges.create({
 });
 
 });
+//sk_live_nDhWREOk6VbBFDsEg6UPLCYw  secret key
+//pk_live_kRwyQMelkk73MWzsvOLiFYTF  public key
+

@@ -73,7 +73,10 @@
           // amount you want to charge, in cents. 1000 = $10.00, 2000 = $20.00 
           // createToken returns immediately - the supplied callback submits 
           // the form if there are no errors
-          var chargeAmount = itemPrice;
+		  //
+		  //
+		  //itemPrice is only in dollars, not in cents. need to multiply it by 100.
+          var chargeAmount = itemPrice*100;
           Stripe.card.createToken({
             name: $("input[name='name']").val(),
             number: $('.card-number').val(),
