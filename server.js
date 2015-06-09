@@ -108,6 +108,10 @@ app.post('/payment', function(req, res) {
       rental.set("Item", itemID);
       rental.set("Price", req.body.itemPrice);
       rental.set("Email", email);
+      rental.set("Address_Line_1", req.body.addressLine1);
+      rental.set("Address_Line_2", req.body.addressLine2);
+      rental.set("CityState", req.body.citystate);
+      rental.set("Zip_Code", req.body.zipcode);
       rental.set("Returned", false);
       rental.set("Address", req.body.address); //TODO this needs to be implemented on the form first before I can get the values and store them
 
