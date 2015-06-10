@@ -47,6 +47,7 @@ app.post('/purchase', function(req, res) {
   price = parseInt(req.body.itemPrice) * 100;
   //creates customer
   stripe.customers.create({
+    console.log(stripeToken);
     source: stripeToken.id,
     email: email,
     description: rentedInfo
