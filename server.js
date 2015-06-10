@@ -51,6 +51,7 @@ app.post('/purchase', function(req, res) {
   var currentUser = req.body.currentUser;//get the current user ID
   //TODO query to see if user exists. if it does, pull it up, else create new customer and save it.
   var customerID = null;
+  var user = null;
   var query = new Parse.Query("_Users");
   query.equalTo("objectId",currentUser);
   query.find({
