@@ -48,13 +48,14 @@ app.post('/purchase', function(req, res) {
   console.log(stripeToken);
   //creates customer
   //check if user already exists
-  var user = req.body.currentUser;//get the current user ID
+  var currentUser = req.body.currentUser;//get the current user ID
   //TODO query to see if user exists. if it does, pull it up, else create new customer and save it.
   var customerID = null;
   var query = new Parse.Query("_Users");
-  query.equalTo("objectId",user);
+  query.equalTo("objectId",currentUser);
   query.find({
     success: function(results) {
+      user = results[0];
       customerID=results[0].get("customerID");
     }, error: function(user, error) {
       // Execute any logic that should take place if the save fails.
