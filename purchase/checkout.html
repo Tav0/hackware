@@ -12,6 +12,30 @@
     <script src="../js/jstorage.min.js"></script>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script type="text/javascript">
+	Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r",
+      "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");
+	//check if the user is logged in:
+	if(Parse.User.current()== null){
+		//redirect user immediately to login page, after which the user is redirected back to this page. 
+		//this has no effect with regard to which item is chosen.
+		//if the user decides to cancel or not sign up, just head back to the home page.
+		        window.location.href = "https://hackware.io/login.html";
+	}
+	
+	
+	/*
+	
+	to check if the user is signed in, just use if(Parse.User.Current()==null). This method call will check if a user is signed in and return the User object if found. else it returns null.
+	
+	
+	
+	*/
+	
+	
+	
+	
+	
+	
       var itemPrice = "Only available at hackathons.",
           itemName = $.jStorage.get("item");
       $(window).load(function() {        
