@@ -49,43 +49,42 @@ app.post('/purchase', function(req, res) {
   //creates customer
   //check if user already exists
   var user = req.body.currentUser;//get the current user ID
-	//TODO query to see if user exists. if it does, pull it up, else create new customer and save it.
+  //TODO query to see if user exists. if it does, pull it up, else create new customer and save it.
   var customerID = null;
   var query = new Parse.Query("_Users");
   query.equalTo("objectId",user);
   query.find({
-      success: function(results) {
-		  customerID=results[0].get("customerID");
-	  },
-  error: function(user, error) {
-    // Execute any logic that should take place if the save fails.
-    // error is a Parse.Error with an error code and message.
-  }});
+    success: function(results) {
+      customerID=results[0].get("customerID");
+    },
+    error: function(user, error) {
+      // Execute any logic that should take place if the save fails.
+      // error is a Parse.Error with an error code and message.
+    }});
   if(customerID==null){
-  
-  stripe.customers.create({
-    source: stripeToken,
-    email: email,
-    description: rentedInfo
-  }).then(function(customer) {
-    return stripe.charges.create({
-      amount: price, // amount in cents, again
-      currency: "usd",
-      customer: customer.id
+    stripe.customers.create({
+      source: stripeToken,
+      email: email,
+      description: rentedInfo
+    }).then(function(customer) {
+      return stripe.charges.create({
+        amount: price, // amount in cents, again
+        currency: "usd",
+        customer: customer.id
+      });
+    }).then(function(charge) {
+      user.set("customerID",customer);
+      user.save(null, {
+        success: function(user) {
+          // Execute any logic that should take place after the object is saved.
+        },
+        error: function(user, error) {
+          // Execute any logic that should take place if the save fails.
+          // error is a Parse.Error with an error code and message.
+        }
+      });
     });
-  }).then(function(charge) {
-	  user.set("customerID",customer);
-	  user.save(null, {
-  success: function(user) {
-    // Execute any logic that should take place after the object is saved.
-  },
-  error: function(user, error) {
-    // Execute any logic that should take place if the save fails.
-    // error is a Parse.Error with an error code and message.
-  }
-});
-  }
-  else{
+  } else {
     //TODO user the customerID to create a new charge.
     //at this point we have the customerID
     stripe.charges.create({
@@ -98,75 +97,75 @@ app.post('/purchase', function(req, res) {
     });
   }	
 
-    //------------------------------------------------------------
-    //Parse stuff
-    //------------------------------------------------------------
-    var itemID = null;
-    //get the first item that matches the description:
-    var query = new Parse.Query("HardWare");
-    query.equalTo("Name", req.body.itemName);//needs to match the name
-    query.equalTo("Rented",false);//needs to be unrented
-    query.find({
-      success: function(results) {
-        itemID=results[0];
-        results[0].set("Rented",true);//set the item as rented and continue.
+  //------------------------------------------------------------
+  //Parse stuff
+  //------------------------------------------------------------
+  var itemID = null;
+  //get the first item that matches the description:
+  var query = new Parse.Query("HardWare");
+  query.equalTo("Name", req.body.itemName);//needs to match the name
+  query.equalTo("Rented",false);//needs to be unrented
+  query.find({
+    success: function(results) {
+      itemID=results[0];
+      results[0].set("Rented",true);//set the item as rented and continue.
 
-        var query = new Parse.Query("HW");
-        query.equalTo("Name", req.body.itemName);//needs to match the name
-        query.find({
-          success: function(results) {
-            //decrement the number of available items
-            var newamount = results[0].get("Available") - 1;
-            results[0].set("Available", newamount);
-			results.save(null, {
-  success: function(results) {
-    // Execute any logic that should take place after the object is saved.
-  },
-  error: function(results, error) {
-    // Execute any logic that should take place if the save fails.
-    // error is a Parse.Error with an error code and message.
-  }
-});
-          },
-          error: function(error) {
-            //nothing to do here.... it should always return the item
-          }
-        });
-      },
-      error: function(error) {
-        //TODO do something here to alert the user, or just put them in the queue...
-
-      }
-    });
-
-    if(itemID!=null){
-      // create parse rental item 
-      var Rental = Parse.Object.extend("Rental");
-      var rental = new Rental();
-
-      rental.set("User",Parse.User.current());
-      rental.set("Name", req.body.name);
-      rental.set("Item", itemID);
-      rental.set("Price", req.body.itemPrice);
-      rental.set("Email", email);
-      rental.set("Address_Line_1", req.body.addressLine1);
-      rental.set("Address_Line_2", req.body.addressLine2);
-      rental.set("CityState", req.body.citystate);
-      rental.set("Zip_Code", req.body.zipcode);
-      rental.set("Returned", false);
-
-      rental.save(null, {
-        success: function(rental) {
-          //don't need to do anything else once it's saved...
+      var query = new Parse.Query("HW");
+      query.equalTo("Name", req.body.itemName);//needs to match the name
+      query.find({
+        success: function(results) {
+          //decrement the number of available items
+          var newamount = results[0].get("Available") - 1;
+          results[0].set("Available", newamount);
+          results.save(null, {
+            success: function(results) {
+              // Execute any logic that should take place after the object is saved.
+            },
+            error: function(results, error) {
+              // Execute any logic that should take place if the save fails.
+              // error is a Parse.Error with an error code and message.
+            }
+          });
         },
-        error: function(rental, error) {
-          alert("unable to save object");//TODO something here, don't know what
+        error: function(error) {
+          //nothing to do here.... it should always return the item
         }
       });
+    },
+    error: function(error) {
+      //TODO do something here to alert the user, or just put them in the queue...
+
     }
   });
-  console.log(rentedInfo);
-  res.send(rentedInfo);
+
+  if(itemID!=null){
+    // create parse rental item 
+    var Rental = Parse.Object.extend("Rental");
+    var rental = new Rental();
+
+    rental.set("User",Parse.User.current());
+    rental.set("Name", req.body.name);
+    rental.set("Item", itemID);
+    rental.set("Price", req.body.itemPrice);
+    rental.set("Email", email);
+    rental.set("Address_Line_1", req.body.addressLine1);
+    rental.set("Address_Line_2", req.body.addressLine2);
+    rental.set("CityState", req.body.citystate);
+    rental.set("Zip_Code", req.body.zipcode);
+    rental.set("Returned", false);
+
+    rental.save(null, {
+      success: function(rental) {
+        //don't need to do anything else once it's saved...
+      },
+      error: function(rental, error) {
+        alert("unable to save object");//TODO something here, don't know what
+      }
+    });
+  }
+});
+console.log(rentedInfo);
+res.send(rentedInfo);
 });
 
 // start the server
