@@ -106,7 +106,6 @@ app.post('/payment', function(req, res) {
       rental.set("CityState", req.body.citystate);
       rental.set("Zip_Code", req.body.zipcode);
       rental.set("Returned", false);
-      rental.set("Address", req.body.address); //TODO this needs to be implemented on the form first before I can get the values and store them
 
       rental.save(null, {
         success: function(rental) {

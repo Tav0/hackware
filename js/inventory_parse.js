@@ -23,7 +23,14 @@ var count = 1;
 	for(O in results){
 	var t = results[O].get('Name');
 	var r = results[O].get('Quantity');
+	
+	
+	
+	
 	var p = results[O].get('Available');
+	if(p<0){
+	p="Only at hackathons";
+	}
 	var text="Get this one!";
 	$("#hovertable").append(
             "<tr value=\"" + t + "\" class=element>"+
