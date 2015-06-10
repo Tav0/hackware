@@ -57,13 +57,9 @@ app.post('/purchase', function(req, res) {
   query.find({
     success: function(results) {
       user = results[0];
-      console.log(results[0]);
+      //console.log(results[0]);
       customerID=results[0].get("customerID");
-    }, error: function(user, error) {
-      // Execute any logic that should take place if the save fails.
-      // error is a Parse.Error with an error code and message.
-    }
-  });
+   
 
   if(customerID == null){
     stripe.customers.create({
@@ -153,7 +149,7 @@ app.post('/purchase', function(req, res) {
     var Rental = Parse.Object.extend("Rental");
     var rental = new Rental();
 
-    rental.set("User",Parse.User.current());
+    rental.set("User",user);//TODO check that this works...
     rental.set("Name", req.body.name);
     rental.set("Item", itemID);
     rental.set("Price", req.body.itemPrice);
@@ -173,6 +169,12 @@ app.post('/purchase', function(req, res) {
       }
     });
   }
+   }, error: function(user, error) {
+      // Execute any logic that should take place if the save fails.
+      // error is a Parse.Error with an error code and message.
+    }
+  });
+  
   console.log(rentedInfo);
   res.send(rentedInfo);
 });
