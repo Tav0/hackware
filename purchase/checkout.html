@@ -124,6 +124,8 @@
         //itemName);
         document.getElementById("itemname").innerHTML = itemName;
         document.getElementById("iName").value = itemName;
+        document.getElementById("currentCustomer").value =
+          Parse.User.current().get("objectId"); 
 
         //TODO parse request to get item (id, price, etc.) and to mark it as 
         //rented if successful
@@ -169,6 +171,7 @@
         <h4 id="itemprice"></h4>
         <input type="hidden" name="itemPrice" id="iPrice" />
 
+        <input type="hidden" name="currentUser" id="currentCustomer" />
         <div class="form-row">
           <label for="name" class="stripeLabel">Your Name</label>
           <input type="text" name="name" class="required" />

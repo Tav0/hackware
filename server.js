@@ -48,7 +48,7 @@ app.post('/purchase', function(req, res) {
   console.log(stripeToken);
   //creates customer
   //check if user already exists
-  var user = req.body.currentuser;//get the current user ID
+  var user = req.body.currentUser;//get the current user ID
 	//TODO query to see if user exists. if it does, pull it up, else create new customer and save it.
   var customerID = null;
   var query = new Parse.Query("_Users");
@@ -86,22 +86,17 @@ app.post('/purchase', function(req, res) {
 });
   }
   else{
-	  //TODO user the customerID to create a new charge.
-	  //at this point we have the customerID
-	  
-	  stripe.charges.create({
-  amount: price,
-  currency: "usd",
-  source: stripeToken, // obtained with Stripe.js
-  description:rentedInfo
-}, function(err, charge) {
-  // asynchronously called
-});
-}	
-		
-		
-	  
-    //saveStripeCustomerId(user, charge.customer);
+    //TODO user the customerID to create a new charge.
+    //at this point we have the customerID
+    stripe.charges.create({
+      amount: price,
+      currency: "usd",
+      source: stripeToken, // obtained with Stripe.js
+      description:rentedInfo
+    }, function(err, charge) {
+      // asynchronously called
+    });
+  }	
 
     //------------------------------------------------------------
     //Parse stuff
