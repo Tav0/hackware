@@ -55,11 +55,7 @@ $(document).ready(function() {
         //console.log("saved");
       },
       error: function(newUser, err) {
-<<<<<<< HEAD
-        //console.log("Error: " + err.code + " " + err.message);
-=======
 			//console.log("Error: " + err.code + " " + err.message);
->>>>>>> 251256786932f7bbda582f3d5a79a5f3e747e120
       }
     });
   }
