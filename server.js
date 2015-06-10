@@ -79,6 +79,15 @@ app.post('/purchase', function(req, res) {
             //decrement the number of available items
             var newamount = results[0].get("Available") - 1;
             results[0].set("Available", newamount);
+			results.save(null, {
+  success: function(results) {
+    // Execute any logic that should take place after the object is saved.
+  },
+  error: function(results, error) {
+    // Execute any logic that should take place if the save fails.
+    // error is a Parse.Error with an error code and message.
+  }
+});
           },
           error: function(error) {
             //nothing to do here.... it should always return the item
