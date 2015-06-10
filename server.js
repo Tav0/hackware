@@ -39,7 +39,7 @@ app.use(errorHandler({
 // POST http://localhost:port
 // parameters sent with
 
-app.post('/payment', function(req, res) {
+app.post('/purchase', function(req, res) {
   var email = req.body.email,
   rentedInfo = req.body.name + " purchased: " + req.body.itemName +
     " for $" + req.body.itemPrice,
