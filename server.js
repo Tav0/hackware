@@ -74,7 +74,7 @@ app.post('/purchase', function(req, res) {
         customer: customer.id
       });
     }).then(function(charge) {
-      user.set("customerID",customer);
+      user.set("customerID", charge.customer);
       user.save(null, {
         success: function(user) {
           // Execute any logic that should take place after the object is saved.
