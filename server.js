@@ -47,6 +47,22 @@ app.post('/purchase', function(req, res) {
   price = parseInt(req.body.itemPrice) * 100;
   console.log(stripeToken);
   //creates customer
+  //check if user already exists
+  var user = req.body.currentuser;//get the current user ID
+	//TODO query to see if user exists. if it does, pull it up, else create new customer and save it.
+  var customerID = null;
+  var query = new Parse.Query("_Users");
+  query.equalTo("objectId",user);
+  query.find({
+      success: function(results) {
+		  customerID=results[0].get("customerID");
+	  },
+  error: function(user, error) {
+    // Execute any logic that should take place if the save fails.
+    // error is a Parse.Error with an error code and message.
+  }});
+  if(customerID==null){
+  
   stripe.customers.create({
     source: stripeToken,
     email: email,
@@ -58,7 +74,34 @@ app.post('/purchase', function(req, res) {
       customer: customer.id
     });
   }).then(function(charge) {
-    saveStripeCustomerId(user, charge.customer);
+	  user.set("customerID",customer);
+	  user.save(null, {
+  success: function(user) {
+    // Execute any logic that should take place after the object is saved.
+  },
+  error: function(user, error) {
+    // Execute any logic that should take place if the save fails.
+    // error is a Parse.Error with an error code and message.
+  }
+});
+  }
+  else{
+	  //TODO user the customerID to create a new charge.
+	  //at this point we have the customerID
+	  
+	  stripe.charges.create({
+  amount: price,
+  currency: "usd",
+  source: stripeToken, // obtained with Stripe.js
+  description:rentedInfo
+}, function(err, charge) {
+  // asynchronously called
+});
+}	
+		
+		
+	  
+    //saveStripeCustomerId(user, charge.customer);
 
     //------------------------------------------------------------
     //Parse stuff
