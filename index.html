@@ -33,18 +33,18 @@
   </noscript>
   <!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
   <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
-  <script>Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r",
-        "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");</script>
-  
-  
+  <script>
+    Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r",
+      "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");
+  </script>
 </head>
 
 <body class="landing">
   <!-- Header -->
-  <header id="header"> <h1 id="logo">
-      <a href="index.html">HackWare</a></h1> 
-    
-    
+  <header id="header"> 
+    <h1 id="logo">
+      <a href="index.html">HackWare</a>
+    </h1> 
     <nav id="nav"> 
       <ul id="lis">
         <li><a href="index.html">Home</a></li> 
@@ -52,24 +52,21 @@
         <li><a href="rentables.html">Rentables</a></li>
       </ul>
     </nav>
-  <script>
-$(document).ready(function(){
-
-var currentUser = Parse.User.current();
-if (currentUser) {
+    <script>
+      $(document).ready(function(){
+        var currentUser = Parse.User.current();
+        if (currentUser) {
           $("#lis").append("<li><a onclick=logout() href=\"\" id=\"logout\">Log out</a></li>");
-} else {
+        } else {
           $("#lis").append("<li><a href=\"\" id=\"logging\">Sign In</a></li>");
-}
-});
-  function logout(){
-  Parse.User.logOut();
-  console.log("clicked");
-};
+        }
+      });
 
-  </script>
-  
-  
+      function logout(){
+        Parse.User.logOut();
+        console.log("clicked");
+      };
+    </script>
   </header>
 
   <!-- Banner -->

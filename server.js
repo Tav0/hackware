@@ -30,7 +30,6 @@ app.use(methodOverride());
 // routes will go here
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-
 app.use(express.static(publicDir));
 app.use(errorHandler({
   dumpExceptions: true,
@@ -60,12 +59,9 @@ app.post('/payment', function(req, res) {
   }).then(function(charge) {
     saveStripeCustomerId(user, charge.customer);
 
-
-
     //------------------------------------------------------------
     //Parse stuff
     //------------------------------------------------------------
-
     var itemID = null;
     //get the first item that matches the description:
     var query = new Parse.Query("HardWare");
@@ -92,14 +88,11 @@ app.post('/payment', function(req, res) {
       error: function(error) {
         //TODO do something here to alert the user, or just put them in the queue...
 
-
       }
     });
 
     if(itemID!=null){
-
       // create parse rental item 
-
       var Rental = Parse.Object.extend("Rental");
       var rental = new Rental();
 
@@ -117,17 +110,13 @@ app.post('/payment', function(req, res) {
 
       rental.save(null, {
         success: function(rental) {
-
           //don't need to do anything else once it's saved...
         },
         error: function(rental, error) {
           alert("unable to save object");//TODO something here, don't know what
         }
       });
-
     }
-
-
   });
   console.log(rentedInfo);
   res.send(rentedInfo);
