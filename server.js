@@ -48,7 +48,7 @@ app.post('/purchase', function(req, res) {
   console.log(stripeToken);
   //creates customer
   stripe.customers.create({
-    source: stripeToken.id,
+    source: stripeToken,
     email: email,
     description: rentedInfo
   }).then(function(customer) {

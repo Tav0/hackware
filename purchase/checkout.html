@@ -57,9 +57,8 @@
             // token contains id, last4, and card type
             var token = response['id'];
             // insert the stripe token
-            var input = $("<input name='stripeToken' value='" + 
-                token + "'style='display:none;' />");
-            form.appendChild(input[0]);
+            var input = $("<input name='stripeToken' value='" + token + "'style='display:none;' />");
+            form.appendChild(input[0])
             // and submit
             form.submit();
           }
