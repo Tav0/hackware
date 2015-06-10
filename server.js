@@ -130,7 +130,7 @@ app.post('/purchase', function(req, res) {
       //decrement the number of available items
       var newamount = results[0].get("Available") - 1;
       results[0].set("Available", newamount);
-      results.save(null, {
+      results[0].save(null, {
         success: function(results) {
           // Execute any logic that should take place after the object is saved.
         },
