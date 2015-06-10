@@ -7,7 +7,7 @@ var Parse = require('parse').Parse;
 Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", 
     "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");
 
-var stripe = require("stripe")("sk_live_nDhWREOk6VbBFDsEg6UPLCYw "),
+var stripe = require("stripe")("sk_live_nDhWREOk6VbBFDsEg6UPLCYw"),
     express = require("express"),
     app = express(),
     bodyParser = require('body-parser'),
