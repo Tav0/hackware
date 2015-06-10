@@ -143,7 +143,7 @@ app.post('/purchase', function(req, res) {
       //nothing to do here.... it should always return the item
     }
   });
-   
+  
   if(itemID != null){
     // create parse rental item 
     var Rental = Parse.Object.extend("Rental");
@@ -165,7 +165,7 @@ app.post('/purchase', function(req, res) {
         //don't need to do anything else once it's saved...
       },
       error: function(rental, error) {
-        alert("unable to save object");//TODO something here, don't know what
+//
       }
     });
   }

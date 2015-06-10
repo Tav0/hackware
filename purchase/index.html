@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../images/hackware_icon.png"
+                              type="image/png"/>
+    <title>Confirmation</title>
+    <script src="../js/parse-1.3.4.min.js"></script>
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/inventory.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <script src="../js/jstorage.min.js"></script>
+    <script type="text/javascript">
+  $(window).load(function() {  
+	  $.jStorage.flush();
+      //something here...
+	  //TODO wait 5 seconds, then redirect to home page.
+	   window.setTimeout(function(){
+
+        // Move to a new location or you can do something else
+        window.location.href = "https://hackware.io";
+
+    }, 5000);
+      });
+</script>
+<body>
+Hi. Payment complete.
+
+<p>Your order has been received and will be mailed out as soon as possible.</p>
+<p>You will be redirected in five seconds</p>
+
+</body>
+</html>
