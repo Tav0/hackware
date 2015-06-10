@@ -57,6 +57,7 @@ app.post('/purchase', function(req, res) {
   query.find({
     success: function(results) {
       user = results[0];
+      console.log(results[0]);
       customerID=results[0].get("customerID");
     }, error: function(user, error) {
       // Execute any logic that should take place if the save fails.
