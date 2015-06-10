@@ -103,13 +103,13 @@ app.post('/purchase', function(req, res) {
   //------------------------------------------------------------
   var itemID = null;
   //get the first item that matches the description:
-  var query = new Parse.Query("HardWare");
+  var query = new Parse.Query("Hardware");
   query.equalTo("Name", req.body.itemName);//needs to match the name
-  query.equalTo("Rented",false);//needs to be unrented
+  query.equalTo("rented", false);//needs to be unrented
   query.find({
     success: function(results) {
       itemID=results[0];
-      results[0].set("Rented",true); //set the item as rented and continue.
+      results[0].set("rented", true); //set the item as rented and continue.
       results[0].save(null, {
         success: function(rental) {
         //don't need to do anything else once it's saved...
