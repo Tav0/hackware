@@ -56,12 +56,13 @@ app.post('/purchase', function(req, res) {
   query.find({
     success: function(results) {
       customerID=results[0].get("customerID");
-    },
-    error: function(user, error) {
+    }, error: function(user, error) {
       // Execute any logic that should take place if the save fails.
       // error is a Parse.Error with an error code and message.
-    }});
-  if(customerID==null){
+    }
+  });
+
+  if(customerID == null){
     stripe.customers.create({
       source: stripeToken,
       email: email,
@@ -82,7 +83,7 @@ app.post('/purchase', function(req, res) {
           // Execute any logic that should take place if the save fails.
           // error is a Parse.Error with an error code and message.
         }
-      });
+      })
     });
   } else {
     //TODO user the customerID to create a new charge.
@@ -108,37 +109,43 @@ app.post('/purchase', function(req, res) {
   query.find({
     success: function(results) {
       itemID=results[0];
-      results[0].set("Rented",true);//set the item as rented and continue.
-
-      var query = new Parse.Query("HW");
-      query.equalTo("Name", req.body.itemName);//needs to match the name
-      query.find({
-        success: function(results) {
-          //decrement the number of available items
-          var newamount = results[0].get("Available") - 1;
-          results[0].set("Available", newamount);
-          results.save(null, {
-            success: function(results) {
-              // Execute any logic that should take place after the object is saved.
-            },
-            error: function(results, error) {
+      results[0].set("Rented",true); //set the item as rented and continue.
+      results[0].save(null, {
+        success: function(rental) {
+        //don't need to do anything else once it's saved...
+        }, error: function(rental, error) {
+          //alert("unable to save object");//TODO something here, don't
+          //know what
+        }
+      });
+    }, error: function(results, error) {
               // Execute any logic that should take place if the save fails.
               // error is a Parse.Error with an error code and message.
-            }
-          });
+    }
+  });
+  var query = new Parse.Query("HW");
+    query.equalTo("Name", req.body.itemName);//needs to match the name
+    query.find({
+    success: function(results) {
+      //decrement the number of available items
+      var newamount = results[0].get("Available") - 1;
+      results[0].set("Available", newamount);
+      results.save(null, {
+        success: function(results) {
+          // Execute any logic that should take place after the object is saved.
         },
-        error: function(error) {
-          //nothing to do here.... it should always return the item
+        error: function(results, error) {
+          // Execute any logic that should take place if the save fails.
+          // error is a Parse.Error with an error code and message.
         }
       });
     },
     error: function(error) {
-      //TODO do something here to alert the user, or just put them in the queue...
-
+      //nothing to do here.... it should always return the item
     }
   });
-
-  if(itemID!=null){
+   
+  if(itemID != null){
     // create parse rental item 
     var Rental = Parse.Object.extend("Rental");
     var rental = new Rental();
@@ -163,9 +170,8 @@ app.post('/purchase', function(req, res) {
       }
     });
   }
-});
-console.log(rentedInfo);
-res.send(rentedInfo);
+  console.log(rentedInfo);
+  res.send(rentedInfo);
 });
 
 // start the server
