@@ -45,9 +45,9 @@ app.post('/purchase', function(req, res) {
     " for $" + req.body.itemPrice,
   stripeToken = req.body.stripeToken,
   price = parseInt(req.body.itemPrice) * 100;
+  console.log(stripeToken);
   //creates customer
   stripe.customers.create({
-    console.log(stripeToken);
     source: stripeToken.id,
     email: email,
     description: rentedInfo
