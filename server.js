@@ -40,31 +40,20 @@ app.use(errorHandler({
 // parameters sent with
 
 app.post('/purchase', function(req, res) {
- var email = req.body.email,
+  var email = req.body.email,
   rentedInfo = req.body.name + " purchased: " + req.body.itemName +
-    " for $" + req.body.itemPrice,
+  " for $" + req.body.itemPrice,
   stripeToken = req.body.stripeToken,
   price = parseInt(req.body.itemPrice) * 100;
-  console.log(stripeToken);
-  //creates customer
-  //check if user already exists
-  var currentUser = req.body.currentUser;//get the current user object
-  console.log(req.body.currentUser);
-  //TODO query to see if user exists. if it does, pull it up, else create new customer and save it.
-  var customerID = currentUser.get("customerID");
-  var user = currentUser;
-  /*var query = new Parse.Query("_User");
-  query.equalTo("username", currentUser);
-  query.find({
-    success: function(results) {
-      user = results[0];
-      customerID = results[0].get("customerID");
-    }, error: function(user, error){
-        //Error logic. TO DO
-    }
-  });
-  */
-   
+console.log(stripeToken);
+//creates customer
+//check if user already exists
+var sessionToken = req.body.sessionToken;//get the current user object
+
+Parse.User.become(sessionToken).then(function (user) {
+  console.log(user);
+  var customerID = user.get('customerID');
+  console.log("customer ID: " + customerID);
   if(customerID == null){
     stripe.customers.create({
       source: stripeToken,
@@ -73,8 +62,8 @@ app.post('/purchase', function(req, res) {
     }).then(function(customer) {
       return stripe.charges.create({
         amount: price, // amount in cents, again
-        currency: "usd",
-        customer: customer.id
+             currency: "usd",
+             customer: customer.id
       });
     }).then(function(charge) {
       user.set("customerID", charge.customer);
@@ -99,7 +88,7 @@ app.post('/purchase', function(req, res) {
     }, function(err, charge) {
       // asynchronously called
     });
-  }	
+  }
 
   //------------------------------------------------------------
   //Parse stuff
@@ -111,24 +100,50 @@ app.post('/purchase', function(req, res) {
   query.equalTo("rented", false);//needs to be unrented
   query.find({
     success: function(results) {
-      itemID=results[0];
+      itemID = results[0].get('itemID');
+      console.log("item id: " + itemID);
       results[0].set("rented", true); //set the item as rented and continue.
       results[0].save(null, {
-        success: function(rental) {
-        //don't need to do anything else once it's saved...
+        success: function(rentedItem) {
+          //don't need to do anything else once it's saved...i
+            // create parse rental item 
+            var Rental = Parse.Object.extend("Rental");
+            var rental = new Rental();
+
+            console.log("RENTAL: " + rental);
+            rental.set("Name", req.body.name);
+            rental.set("Item", itemID);
+            rental.set("Price", req.body.itemPrice);
+            rental.set("Email", email);
+            rental.set("Address_Line_1", req.body.addressLine1);
+            rental.set("Address_Line_2", req.body.addressLine2);
+            rental.set("CityState", req.body.citystate);
+            rental.set("Zip_Code", req.body.zipcode);
+            rental.set("Returned", false);
+
+            rental.save(null, {
+              success: function(rental) {
+                console.log('item info stored');
+                //don't need to do anything else once it's saved...
+              }, error: function(rental, error) {
+                //ERROR LOGIC TO DO
+                console.log('item error: ' + error);
+                console.log('rental: ' + rental);
+              }
+            });
         }, error: function(rental, error) {
           //alert("unable to save object");//TODO something here, don't
           //know what
         }
       });
     }, error: function(results, error) {
-              // Execute any logic that should take place if the save fails.
-              // error is a Parse.Error with an error code and message.
+      // Execute any logic that should take place if the save fails.
+      // error is a Parse.Error with an error code and message.
     }
   });
   var query = new Parse.Query("HW");
-    query.equalTo("Name", req.body.itemName);//needs to match the name
-    query.find({
+  query.equalTo("Name", req.body.itemName);//needs to match the name
+  query.find({
     success: function(results) {
       //decrement the number of available items
       var newamount = results[0].get("Available") - 1;
@@ -146,33 +161,12 @@ app.post('/purchase', function(req, res) {
       //nothing to do here.... it should always return the item
     }
   });
-  
-  if(itemID != null){
-    // create parse rental item 
-    var Rental = Parse.Object.extend("Rental");
-    var rental = new Rental();
+}, function (error) {
+  console.log("fuck this");
+});
 
-    rental.set("User",currentUser);//TODO check that this works...
-    rental.set("Name", req.body.name);
-    rental.set("Item", itemID);
-    rental.set("Price", req.body.itemPrice);
-    rental.set("Email", email);
-    rental.set("Address_Line_1", req.body.addressLine1);
-    rental.set("Address_Line_2", req.body.addressLine2);
-    rental.set("CityState", req.body.citystate);
-    rental.set("Zip_Code", req.body.zipcode);
-    rental.set("Returned", false);
-
-    rental.save(null, {
-      success: function(rental) {
-        //don't need to do anything else once it's saved...
-      }, error: function(rental, error) {
-          //ERROR LOGIC TO DO
-      }
-    });
- } 
-  console.log(rentedInfo);
-  res.send(rentedInfo);
+console.log(rentedInfo);
+res.send(rentedInfo);
 });
 
 // start the server

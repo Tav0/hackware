@@ -23,7 +23,8 @@
       // exceptions have caused other parts of the script to fail.
         $(".card-number").attr("name", "card-number")
         $(".card-cvc").attr("name", "card-cvc")
-        $(".card-expiry-year").attr("name", "card-expiry-year")}
+        $(".card-expiry-year").attr("name", "card-expiry-year")
+      }
       
       function removeInputNames() {
         $(".card-number").removeAttr("name")
@@ -124,9 +125,12 @@
           "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");    
         //alert("this is the checkout page, and I just got this item: " +
         //itemName);
+
         document.getElementById("itemname").innerHTML = itemName;
         document.getElementById("iName").value = itemName;
-        document.getElementById("currentCustomer").value = Parse.User.current(); 
+        document.getElementById("customer").value =
+          Parse.User.current()._sessionToken;
+        //console.log(Parse.User.current()._sessionToken);
 
         //TODO parse request to get item (id, price, etc.) and to mark it as 
         //rented if successful
@@ -170,7 +174,7 @@
         <h4 id="itemprice"></h4>
         <input type="hidden" name="itemPrice" id="iPrice" />
 
-        <input type="hidden" name="currentUser" id="currentCustomer" />
+        <input type="hidden" name="sessionToken" id="customer" />
         <div class="form-row">
           <label for="name" class="stripeLabel">Your Name</label>
           <input type="text" name="name" class="required" />
