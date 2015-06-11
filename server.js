@@ -48,13 +48,13 @@ app.post('/purchase', function(req, res) {
   console.log(stripeToken);
   //creates customer
   //check if user already exists
-  var currentUser = req.body.currentUser;//get the current user ID
+  var currentUser = req.body.currentUser;//get the current user object
   console.log(req.body.currentUser);
   //TODO query to see if user exists. if it does, pull it up, else create new customer and save it.
-  var customerID = null;
-  var user = null;
-  var query = new Parse.Query("_User");
-  query.equalTo("username", email);
+  var customerID = currentUser.get("customerID");
+  var user = currentUser;
+  /*var query = new Parse.Query("_User");
+  query.equalTo("username", currentUser);
   query.find({
     success: function(results) {
       user = results[0];
@@ -63,6 +63,7 @@ app.post('/purchase', function(req, res) {
         //Error logic. TO DO
     }
   });
+  */
    
   if(customerID == null){
     stripe.customers.create({

@@ -126,7 +126,7 @@
         //itemName);
         document.getElementById("itemname").innerHTML = itemName;
         document.getElementById("iName").value = itemName;
-        document.getElementById("currentCustomer").value = Parse.User.current().id; 
+        document.getElementById("currentCustomer").value = Parse.User.current(); 
 
         //TODO parse request to get item (id, price, etc.) and to mark it as 
         //rented if successful
