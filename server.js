@@ -93,14 +93,14 @@ Parse.User.become(sessionToken).then(function (user) {
   //------------------------------------------------------------
   //Parse stuff
   //------------------------------------------------------------
-  var itemID = null;
+  
   //get the first item that matches the description:
   var query = new Parse.Query("Hardware");
   query.equalTo("Name", req.body.itemName);//needs to match the name
   query.equalTo("rented", false);//needs to be unrented
   query.find({
     success: function(results) {
-      itemID = results[0].get('itemID');
+      var itemID = results[0].get('itemID');
       console.log("item id: " + itemID);
       results[0].set("rented", true); //set the item as rented and continue.
       results[0].save(null, {
@@ -110,7 +110,7 @@ Parse.User.become(sessionToken).then(function (user) {
             var Rental = Parse.Object.extend("Rental");
             var rental = new Rental();
 
-            console.log("RENTAL: " + rental);
+            //console.log("RENTAL: " + rental);
             rental.set("Name", req.body.name);
             rental.set("Item", itemID);
             rental.set("Price", req.body.itemPrice);
@@ -127,11 +127,11 @@ Parse.User.become(sessionToken).then(function (user) {
                 //don't need to do anything else once it's saved...
               }, error: function(rental, error) {
                 //ERROR LOGIC TO DO
-                console.log('item error: ' + error);
-                console.log('rental: ' + rental);
+                console.log('item error: ' + error.get('message');
+                console.log('rental: ' + rental.get('name'));
               }
             });
-        }, error: function(rental, error) {
+        }, error: function(rentedItem, error) {
           //alert("unable to save object");//TODO something here, don't
           //know what
         }
@@ -141,6 +141,7 @@ Parse.User.become(sessionToken).then(function (user) {
       // error is a Parse.Error with an error code and message.
     }
   });
+  
   var query = new Parse.Query("HW");
   query.equalTo("Name", req.body.itemName);//needs to match the name
   query.find({
