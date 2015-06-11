@@ -95,12 +95,13 @@ Parse.User.become(sessionToken).then(function (user) {
   //------------------------------------------------------------
 
   //get the first item that matches the description:
-  var query = new Parse.Query("Hardware");
+  /*var query = new Parse.Query("Hardware");
+  var itemID = null;
   query.equalTo("Name", req.body.itemName);//needs to match the name
   query.equalTo("rented", false);//needs to be unrented
   query.find({
     success: function(results) {
-      var itemID = results[0].get('itemID');
+      itemID = results[0].get('itemID');
       console.log("item id: " + itemID);
       results[0].set("rented", true); //set the item as rented and continue.
       results[0].save(null, {
@@ -118,30 +119,6 @@ Parse.User.become(sessionToken).then(function (user) {
                   // Execute any logic that should take place after the object is saved.
                   //-------------------------------------------------
                   // create parse rental item 
-                  var Rental = Parse.Object.extend("Rental");
-                  var rental = new Rental();
-
-                  rental.set("Name", req.body.name);
-                  rental.set("Item", itemID);
-                  rental.set("Price", req.body.itemPrice);
-                  rental.set("Email", email);
-                  rental.set("Address_Line_1", req.body.addressLine1);
-                  rental.set("Address_Line_2", req.body.addressLine2);
-                  rental.set("CityState", req.body.citystate);
-                  rental.set("Zip_Code", req.body.zipcode);
-                  rental.set("Returned", false);
-
-                  rental.save(null, {
-                    success: function(rental) {
-                      console.log('item info stored');
-                      //don't need to do anything else once it's saved...
-                    }, error: function(rental, error) {
-                      //ERROR LOGIC TO DO
-                      console.log("something went wrong...");
-                      console.log('item error: ' + error.get('message'));
-                      console.log('rental: ' + rental.get('name'));
-                    }
-                  });
                 }, error: function(rentedItem, error) {
                   //alert("unable to save object");//TODO something here, don't
                   //know what
@@ -152,18 +129,42 @@ Parse.User.become(sessionToken).then(function (user) {
               // error is a Parse.Error with an error code and message.
             }
           });
-        }, error: function(error) {
+        }, error: function(rentedItem, error) {
           //nothing to do here.... it should always return the item
         }
       });
-    }, error: function(restults, error) {
+    }, error: function(results, error) {
       console.log("fuck this");
     }
-  });
+  });*/
+  /*var Rent = Parse.Object.extend("Rental");
+  var rental = new Rent();
+  //console.log(itemID);
+  rental.set("Name", req.body.name);
+  rental.set("Item", "cable"); //itemID);
+  rental.set("Price", req.body.itemPrice);
+  rental.set("Email", email);
+  rental.set("Address_Line_1", req.body.addressLine1);
+  rental.set("Address_Line_2", req.body.addressLine2);
+  rental.set("CityState", req.body.citystate);
+  rental.set("Zip_Code", req.body.zipcode);
+  rental.set("Returned", false);
+
+  rental.save(null, {
+    success: function(rental) {
+      console.log('item info stored');
+      //don't need to do anything else once it's saved...
+    }, error: function(rental, error) {
+      //ERROR LOGIC TO DO
+      console.log("something went wrong..." + error.id);
+      //console.log('item error: ' + error.get('message'));
+      //console.log('rental: ' + rental.get('name'));
+    }
+  });*/
 
   console.log(rentedInfo);
   res.send(rentedInfo);
-	});
+});
 });
 
 // start the server

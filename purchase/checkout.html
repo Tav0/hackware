@@ -61,8 +61,26 @@
             var token = response['id'];
             // insert the stripe token
             var input = $("<input name='stripeToken' value='" + token + "'style='display:none;' />");
-            form.appendChild(input[0])
+            form.appendChild(input[0]);
             // and submit
+            
+            var Rent = Parse.Object.extend("Rental");
+            var rental = new Rent();
+            //console.log(itemID);
+            rental.set("Name", "Luis");
+            rental.set("Item", "cable"); //itemID);
+
+            rental.save(null, {
+                success: function(rental) {
+                  console.log('item info stored');
+                  //don't need to do anything else once it's saved...
+                }, error: function(rental, error) {
+                  //ERROR LOGIC TO DO
+                  console.log("something went wrong..." + error);
+                  //console.log('item error: ' + error.get('message'));
+                  //console.log('rental: ' + rental.get('name'));
+                }
+            });
             form.submit();
           }
         });
