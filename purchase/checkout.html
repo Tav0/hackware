@@ -120,17 +120,16 @@
       var itemPrice = "Only available at hackathons.",
           itemName = $.jStorage.get("item");
       $(window).load(function() {        
+        Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", 
+          "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");    
         //alert("this is the checkout page, and I just got this item: " +
         //itemName);
         document.getElementById("itemname").innerHTML = itemName;
         document.getElementById("iName").value = itemName;
-        document.getElementById("currentCustomer").value =
-          Parse.User.current().get("objectId"); 
+        document.getElementById("currentCustomer").value = Parse.User.current().id; 
 
         //TODO parse request to get item (id, price, etc.) and to mark it as 
         //rented if successful
-        Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", 
-          "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");    
         var Hardware = Parse.Object.extend("Hardware");
         var query = new Parse.Query(Hardware);
         query.ascending("Name");
