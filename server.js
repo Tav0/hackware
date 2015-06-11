@@ -163,6 +163,7 @@ Parse.User.become(sessionToken).then(function (user) {
 
   console.log(rentedInfo);
   res.send(rentedInfo);
+	});
 });
 
 // start the server
