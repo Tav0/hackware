@@ -156,16 +156,37 @@
           }
         });
       });
+		  //this method creates the rental object with the field "paid" marked as false by default. upon receiving payment, this gets updated to true.
+		  function other(){
+                  var Rental = Parse.Object.extend("Rental");
+                  var rental = new Rental();
+
+                  rental.set("Name", req.body.name);
+                  rental.set("Item", itemID);
+                  rental.set("Price", req.body.itemPrice);
+                  rental.set("Email", email);
+                  rental.set("Address_Line_1", req.body.addressLine1);
+                  rental.set("Address_Line_2", req.body.addressLine2);
+                  rental.set("CityState", req.body.citystate);
+                  rental.set("Zip_Code", req.body.zipcode);
+                  rental.set("Returned", false);
+				  rental.set("paid",false);
+                  rental.save(null, {
+                    success: function(rental) {
+                      console.log('item info stored');
+                      //don't need to do anything else once it's saved...
+                    }, error: function(rental, error) {
+                      //ERROR LOGIC TO DO
+                      console.log("something went wrong...");
+                    }
+                  });
+		  }
     </script>
   </head>
 
   <body>
     <div id="container">
       <h1>Rental Checkout</h1>
-      <!-- TODO: get the name of the item clicked on previous page. use that 
-        name to search the parse db for the first item that matches that name 
-        that is still available for rent. get the price and set that to a var 
-        to be used in -->
       <form action="/purchase" method="POST" id="payment-form" 
       style="display: none;">
         <h4 id="itemname"></h4>
@@ -239,7 +260,7 @@
             </script>
           </div>
         </div>
-        <input type="submit" class="submit-button" value="Submit">
+        <input type="submit" onclick="other()" class="submit-button" value="Submit">
         <div class="payment-errors"></div>
       </form>
 

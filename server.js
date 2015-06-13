@@ -52,6 +52,7 @@ var sessionToken = req.body.sessionToken;//get the current user object
 
 Parse.User.become(sessionToken).then(function (user) {
   console.log(user);
+  var execute = true;//this variable controls whether we update the Parse db or not.
   var customerID = user.get('customerID');
   console.log("customer ID: " + customerID);
   if(customerID == null){
@@ -74,6 +75,7 @@ Parse.User.become(sessionToken).then(function (user) {
         error: function(user, error) {
           // Execute any logic that should take place if the save fails.
           // error is a Parse.Error with an error code and message.
+			execute=false;
         }
       });
     });
@@ -87,14 +89,17 @@ Parse.User.become(sessionToken).then(function (user) {
       description: rentedInfo
     }, function(err, charge) {
       // asynchronously called
+		execute=false;
     });
-  }
-
-  //------------------------------------------------------------
-  //Parse stuff
-  //------------------------------------------------------------
-
-  //get the first item that matches the description:
+	//
+	//
+	//-----------------------------------------------------------------------------------------
+	//
+	//
+	//finished the stripe stuff, now updating parse DB
+	
+	if(execute){
+	//get the first item that matches the description:
   var query = new Parse.Query("Hardware");
   query.equalTo("Name", req.body.itemName);//needs to match the name
   query.equalTo("rented", false);//needs to be unrented
@@ -115,38 +120,21 @@ Parse.User.become(sessionToken).then(function (user) {
               results[0].set("Available", newamount);
               results[0].save(null, {
                 success: function(results) {
-                  // Execute any logic that should take place after the object is saved.
-                  //-------------------------------------------------
-                  // create parse rental item 
-                  var Rental = Parse.Object.extend("Rental");
-                  var rental = new Rental();
-
-                  rental.set("Name", req.body.name);
-                  rental.set("Item", itemID);
-                  rental.set("Price", req.body.itemPrice);
-                  rental.set("Email", email);
-                  rental.set("Address_Line_1", req.body.addressLine1);
-                  rental.set("Address_Line_2", req.body.addressLine2);
-                  rental.set("CityState", req.body.citystate);
-                  rental.set("Zip_Code", req.body.zipcode);
-                  rental.set("Returned", false);
-
-                  rental.save(null, {
-                    success: function(rental) {
-                      console.log('item info stored');
-                      //don't need to do anything else once it's saved...
-                    }, error: function(rental, error) {
-                      //ERROR LOGIC TO DO
-                      console.log("something went wrong...");
-                      console.log('item error: ' + error.get('message'));
-                      console.log('rental: ' + rental.get('name'));
-                    }
-                  });
-                }, error: function(rentedItem, error) {
-                  //alert("unable to save object");//TODO something here, don't
-                  //know what
-                }
-              });
+                 var query = new Parse.Query("Rental");
+          query.equalTo("item", itemID);//needs to match the name
+		  query.equalTo("paid",false);
+          query.find({
+            success: function(results) {
+              //update paid to true
+              results[0].set("paid", true);
+              results[0].save(null, {
+                success: function(results) {
+                  //just save it....
+        }, error: function(error) {
+          //nothing to do here.... it should always return the item
+        }
+      });
+				//-----------------------------------------------------------------	
             }, error: function(results, error) {
               // Execute any logic that should take place if the save fails.
               // error is a Parse.Error with an error code and message.
@@ -160,9 +148,25 @@ Parse.User.become(sessionToken).then(function (user) {
       console.log("fuck this");
     }
   });
-
-  console.log(rentedInfo);
+	
+	}
+		else{
+		console.log("payment failed somehow...");
+		}
+	
+	console.log(rentedInfo);
   res.send(rentedInfo);
+	
+	
+  }
+
+  //------------------------------------------------------------
+  //Parse stuff
+  //------------------------------------------------------------
+
+  
+
+  
 	});
 });
 
