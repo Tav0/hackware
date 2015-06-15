@@ -19,7 +19,7 @@ $(document).ready(function() {
         $('.login-form .error').html(
             "<span style='color:#E44C65'>Invalid email or password." +  
             " Please try again.</span>").show();
-        console.log("Error Message:", error);
+        //console.log("Error Message:", error);
         return false;
       }
     });

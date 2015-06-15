@@ -15,7 +15,6 @@
       "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");
 	function submit(){
 	var username = $("#user").val();
-    console.log(username);
     var password = $("#passid").val();
 
     Parse.User.logIn(username, password, {
@@ -29,7 +28,6 @@
         $('.login-form .error').html(
             "<span style='color:#E44C65'>Invalid email or password." +  
             " Please try again.</span>").show();
-        console.log("Error Message:", error);
         return false;
       }
     });
@@ -45,14 +43,19 @@
 	<div>
 		<h1>Log in to continue</h1>
 	</div>
-	<div>
-		<input type="email" id="user" class="form-control" placeholder="Email adress" required="" autocomplete="on">
-		<input type="password" id="passid" class="form-control" placeholder="Password" required="true" autocomplete="on">
-		<input type="submit" class="button" onclick="submit()" value="Submit">
+	<div class="login-form">
+          <input type="email" id="user" class="form-control" 
+            placeholder="Email adress" required="" autocomplete="on">
+          <input type="password" id="passid" class="form-control" 
+            placeholder="Password" required="true" autocomplete="on">
+          <input type="submit" class="button" onclick="submit()" 
+            value="Submit">
+          <div class="error"></div>
 	</div>
 	<div>or</div>
 	<div>
-		<input type="submit" class="button" onclick="register()" value="Register">
+          <input type="submit" class="button" onclick="register()" 
+            value="Register">
 	</div>
 </body>
 </html>

@@ -33,7 +33,10 @@ $(document).ready(function(){
         window.location.href="inventory.html"; 
       },
       error: function(newUser,  err){ //add if email is already used
-        console.log("error: " + err.code + " " + err.message);
+        $('.form-signin .error').html(
+            "<span style='color:#E44C65'>Email already used." + 
+            " Please try again.</span>").show();
+          //console.log("error: " + err.code + " " + err.message);
       }
     });
     event.preventDefault();
