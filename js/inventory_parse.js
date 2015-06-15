@@ -17,13 +17,16 @@ query.find({
           "<td>"+
           "<u><b>Available</b></u>"+
           "</td>"+
+		  "<td>"+
+          "<u><b>Price</b></u>"+
+          "</td>"+	  
           "</tr>");
 	// for loop
 var count = 1;
 	for(O in results){
 	var t = results[O].get('Name');
 	var r = results[O].get('Quantity');
-	
+	var g = results[O].get('Price');
 	
 	
 	
@@ -41,8 +44,10 @@ var count = 1;
             r+
             "</td><td>"+
             p+
-		  "</td>"+
-            "</td></tr>");
+		  "</td><td>"+
+		  g+
+		  
+            "</td></td></tr>");
         count++;	
 	}
   },
