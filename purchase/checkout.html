@@ -40,50 +40,6 @@ $(document).ready(function() {
     // given a valid form, submit the payment details to stripe
     $(form['submit-button']).attr("disabled", "disabled")
 
-<<<<<<< HEAD
-            // we add these names back in so we can revalidate properly
-            addInputNames();
-          } else {
-            // token contains id, last4, and card type
-            var token = response['id'];
-            // insert the stripe token
-            var input = $("<input name='stripeToken' value='" + token + "'style='display:none;' />");
-            form.appendChild(input[0]);
-            // and submit
-            
-            var Rent = Parse.Object.extend("Rental");
-            var rental = new Rent();
-            //console.log(itemID);
-            rental.set("Name", "Luis");
-            rental.set("Item", "cable"); //itemID);
-
-            rental.save(null, {
-                success: function(rental) {
-                  console.log('item info stored');
-                  //don't need to do anything else once it's saved...
-                }, error: function(rental, error) {
-                  //ERROR LOGIC TO DO
-                  console.log("something went wrong..." + error);
-                  //console.log('item error: ' + error.get('message'));
-                  //console.log('rental: ' + rental.get('name'));
-                }
-            });
-            form.submit();
-          }
-        });
-        return false;
-      }
-      // add custom rules for credit card validating
-      jQuery.validator.addMethod("cardNumber",
-          Stripe.validateCardNumber, "Please enter a valid card number");
-      jQuery.validator.addMethod("cardCVC", 
-          Stripe.validateCVC, "Please enter a valid security code");
-      jQuery.validator.addMethod("cardExpiry",
-          function() {
-            return Stripe.validateExpiry($(".card-expiry-month").val(),
-                $(".card-expiry-year").val())
-          }, "Please enter a valid expiration");
-=======
       Stripe.createToken({
         number: $('.card-number').val(),
         cvc: $('.card-cvc').val(),
@@ -109,7 +65,6 @@ $(document).ready(function() {
 
           var Rental = Parse.Object.extend("Rental");
           var rental = new Rental();
->>>>>>> 3209e47b1ff68f4ce8e18b017fca9745475cd725
 
           rental.set("Name", $("input[name='name']").val());
           rental.set("Item", $("input[name='itemName']").val());
