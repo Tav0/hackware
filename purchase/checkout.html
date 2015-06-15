@@ -15,7 +15,7 @@
 
     <script type="text/javascript">
 // This identifies your website in the createToken call below
-Stripe.setPublishableKey('pk_test_Z5GLMwFTwd9TUvq6Pp1ds4dg');
+Stripe.setPublishableKey('pk_live_kRwyQMelkk73MWzsvOLiFYTF');
 $(document).ready(function() {
   function addInputNames() {
     // Not ideal, but jQuery's validate plugin requires fields to have names
@@ -62,30 +62,6 @@ $(document).ready(function() {
           // insert the stripe token
           var input = $("<input name='stripeToken' value='" + token + "'style='display:none;' />");
           form.appendChild(input[0]);
-
-          var Rental = Parse.Object.extend("Rental");
-          var rental = new Rental();
-
-          rental.set("Name", $("input[name='name']").val());
-          rental.set("Item", $("input[name='itemName']").val());
-          rental.set("Price", $("input[name='itemPrice']").val());
-          rental.set("Email", $("input[name='email']").val()); 
-          rental.set("Address_Line_1", $("input[name='addressLine1']").val());
-          rental.set("Address_Line_2", $("input[name='addressLine2']").val());
-          rental.set("CityState", $("input[name='citystate']").val());
-          rental.set("Zip_Code", $("input[name='zipcode']").val());
-          rental.set("Returned", false);
-
-          rental.save(null, {
-            success: function(rental) {
-              console.log('item info stored');
-              //don't need to do anything else once it's saved...
-            }, error: function(rental, error) {
-              //ERROR LOGIC TO DO
-              console.log("something went wrong...");
-            }
-          });
-
           // and submit
           form.submit();
         }
@@ -145,8 +121,6 @@ if(Parse.User.current()== null){
 var itemPrice = "Only available at hackathons.",
     itemName = $.jStorage.get("item");
 $(window).load(function() {        
-  Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", 
-      "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");    
   //alert("this is the checkout page, and I just got this item: " +
   //itemName);
 
@@ -180,32 +154,7 @@ $(window).load(function() {
     }
   });
 });
-/*/this method creates the rental object with the field "paid" marked as false by default. upon receiving payment, this gets updated to true.
-  function other(){
-  var Rental = Parse.Object.extend("Rental");
-  var rental = new Rental();
-
-  rental.set("Name", $("input[name='name']").val());
-  rental.set("Item", $("input[name='itemName']").val());
-  rental.set("Price", $("input[name='itemPrice']").val());
-  rental.set("Email", $("input[name='email']").val()); 
-  rental.set("Address_Line_1", $("input[name='addressLine1']").val());
-  rental.set("Address_Line_2", $("input[name='addressLine2']").val());
-  rental.set("CityState", $("input[name='citystate']").val());
-  rental.set("Zip_Code", $("input[name='zipcode']").val());
-  rental.set("Returned", false);
-
-  rental.save(null, {
-  success: function(rental) {
-  console.log('item info stored');
-//don't need to do anything else once it's saved...
-}, error: function(rental, error) {
-//ERROR LOGIC TO DO
-console.log("something went wrong...");
-}
-});
-}*/
-    </script>
+</script>
   </head>
 
   <body>
