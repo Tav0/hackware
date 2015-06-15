@@ -572,10 +572,20 @@ textarea {
   outline: 0;
   padding: 0 1em;
   text-decoration: none;
-  width: 100%;
+  width: 80%;
   margin: auto;
   /*max-width: 50%;*/
   margin-bottom: 5px;
+}
+
+.card-expiry-month {
+  display: inline;
+  width: 35%;
+}
+
+.card-expiry-year {
+  display: inline;
+  width: 40%;
 }
 
 input[type="text"]:invalid,
@@ -1116,7 +1126,7 @@ input[type="button"],
   display: inline-block;
   font-weight: 300;
   height: 3rem;
-  line-height: 3em;
+  /*line-height: 3em;*/
   padding: 0 2.25em;
   text-align: center;
   text-decoration: none;
