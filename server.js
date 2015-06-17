@@ -7,7 +7,7 @@ var Parse = require('parse').Parse;
 Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", 
     "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");
 
-var stripe = require("stripe")("sk_live_nDhWREOk6VbBFDsEg6UPLCYw"),
+var stripe = require("stripe")("sk_test_kGOh10LZ0WOuswOg6tZIAISK"),
     express = require("express"),
     app = express(),
     bodyParser = require('body-parser'),
@@ -129,7 +129,9 @@ if(execute){
 
                   rental.save(null, {    
                     success: function(rental) {    
-                      console.log('item info stored');   
+                      console.log('item info stored');  
+                      console.log(rentedInfo);
+                      res.send("confirmation.html");
                       //don't need to do anything else once it's saved...    
                     }, error: function(rental, error) {    
                       //ERROR LOGIC TO DO    
@@ -156,8 +158,6 @@ if(execute){
   console.log("payment failed somehow...");
 }
 
-console.log(rentedInfo);
-res.send(rentedInfo);
 });
 // start the server
 console.log("Simple static server showing \n %s listening at http://%s:%s",
