@@ -140,6 +140,9 @@ span.icon.alt.major.width {
   height: 7em;
 }
 
+ul#purchased {
+  list-style-type: none;
+}
 
 /* Popup */
 #popupBox{
