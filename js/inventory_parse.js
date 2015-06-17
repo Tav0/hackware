@@ -38,9 +38,45 @@ query.find({
           "</td><td>"+
           p+
           "</td>"+
+<<<<<<< HEAD
           "</td></tr>");
       count++;	
     }
+=======
+		  "<td>"+
+          "<u><b>Price</b></u>"+
+          "</td>"+	  
+          "</tr>");
+	// for loop
+var count = 1;
+	for(O in results){
+	var t = results[O].get('Name');
+	var r = results[O].get('Quantity');
+	var g = results[O].get('Price');
+	
+	
+	
+	var p = results[O].get('Available');
+	if(p<0){
+	p="Only at hackathons";
+	}
+	var text="Get this one!";
+	$("#hovertable").append(
+            "<tr value=\"" + t + "\" class=element>"+
+			"<td>"+count+"</td>"+
+			"<td>"+
+            "<a href=\"purchase/checkout.html\" onclick=\"checkout()\">" +t+"</a>"+
+            "</td><td>"+
+            r+
+            "</td><td>"+
+            p+
+		  "</td><td>"+
+		  g+
+		  
+            "</td></td></tr>");
+        count++;	
+	}
+>>>>>>> 9bc810ff94f27035aa12c5a3dcea73aefb1519a3
   },
   error: function(error) {
     alert("Error: " + error.code + " " + error.message);

@@ -2,7 +2,7 @@
 //sk_live_nDhWREOk6VbBFDsEg6UPLCYw is the live key
 //sk_test_kGOh10LZ0WOuswOg6tZIAISK is the test key
 
-//current status: LIVE
+//current status: LIVE!
 var Parse = require('parse').Parse;
 Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", 
     "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");
