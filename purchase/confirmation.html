@@ -25,8 +25,7 @@
           success: function(result) {
             $(".confirm").append(
                 "<p>Hi " + result[0].get("Name") + 
-                ", your rental payment has been " +
-                "received.</p>" + 
+                ", your rental payment has been received.</p>" + 
                 "<ul id="purchased"><li>" + result[0].get("Item") + " " +
                 "$" + result[0].get("Price") + "</li></ul>" +  
                 "<p>Please check for an email from us!</p>" +
