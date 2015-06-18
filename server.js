@@ -141,7 +141,7 @@ app.post('/purchase', function(req, res) {
                   }
                 });
               }, error: function(results, error) {
-                console.log("fuck this");
+                //error logic to do
               }
             });
           }, error: function(rentedItem, error) {

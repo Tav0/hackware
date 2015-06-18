@@ -1,5 +1,9 @@
-<html>
-<!-- This page should only be called on if the user comes from the inventory page and is not logged in yet. The user will log in or sign up, and subsequently be forwarded to the checkout.html page to fulfil his or her order. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- This page should only be called if the user comes tries to purchase
+     an item or tries to access the confirmation page without being logged in.
+     Once logged in user will be redirected to main page. -->
 
 
 <head>
@@ -19,7 +23,7 @@
 
     Parse.User.logIn(username, password, {
       success: function(user) {
-        window.location.href="purchase/checkout.html";
+        window.location.href="/index.html";
 		//TODO redirect to the correct webpage...
         return true;
       },

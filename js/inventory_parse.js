@@ -2,7 +2,7 @@ Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r",
     "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");    
 var Hardware = Parse.Object.extend("HW");
 var query = new Parse.Query(Hardware);
-query.ascending("Name");
+query.descending("Available");
 query.find({
   success: function(results) {
     // Successfully retrieved the object.
@@ -28,17 +28,28 @@ query.find({
       var r = results[O].get('Quantity');
       var g = results[O].get('Price');
       var p = results[O].get('Available');
-      if(p<0){
+      if(p == -1){ 
         p="Only at hackathons";
+      } else if (p == 0) {
+        p = "Out of Stock";
       }
+
       var text="Get this one!";
-      $("#hovertable").append(
+      if(p > 0) {
+       $("#hovertable").append(
           "<tr value=\"" + t + "\" class=element>" +
           "<td>" + count + "</td>" + "<td>" +
           "<a href=\"purchase/checkout.html\" onclick=\"checkout()\">" +
           t + "</a>" + "</td><td>" + r + "</td><td>" + p + "</td><td>" +
-          g + "</td></td></tr>");
-      count++;	
+          "$" + g + "</td></td></tr>");
+      } else {
+        $("#hovertable").append(
+          "<tr value=\"" + t + "\" class=element>" +
+          "<td>" + count + "</td>" + "<td>" +
+          t + "</td><td>" + r + "</td><td>" + p + "</td><td>" +
+          "$" + g + "</td></td></tr>");
+      }
+      count++;
     }
   },
   error: function(error) {
