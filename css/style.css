@@ -18,6 +18,28 @@ div#btn {
   margin: 1.5vh;
 }
 
+#logopic{
+-webkit-transition: all .5s ease;
+-moz-transition: all .5s ease;
+-ms-transition: all .5s ease;
+-o-transition: all .5s ease;
+transition: all .5s ease;
+      box-shadow: 0px 0px 0px #64b564;
+    -moz-box-shadow: 0 0 0px #64b564;
+-webkit-box-shadow: 0 0 0px #64b564;
+}
+#logopic:hover{
+    -webkit-transition: all .5s ease;
+-moz-transition: all .5s ease;
+-ms-transition: all .5s ease;
+-o-transition: all .5s ease;
+transition: all .5s ease;
+  box-shadow: 0px 0px 100px #64b564;
+    -moz-box-shadow: 0 0 100px #64b564;
+-webkit-box-shadow: 0 0 100px #64b564;
+}
+
+
 h1#title {
   text-align: center;
   font-size: 5vh;
@@ -44,6 +66,7 @@ p#input {
   margin-top: 2vh;
   margin-bottom: 2vh;
 }
+
 
 #rent_button{
 
