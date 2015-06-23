@@ -59,11 +59,11 @@
 			// results is an array of Parse.Object.
 			if(!results[0].get("Available")<=0){
 				//jquery here to insert link to checkout
-				$('#Myo').append("<b><font size = \"10\"><a onclick=\"checkout2()\" href = \"purchase/checkout.html\">MYO ARMBAND: $50</a></font></b>");
+				$('#myo').append("<b><font size = \"10\"><a onclick=\"checkout2()\" href = \"purchase/checkout.html\">MYO ARMBAND: $50</a></font></b>");
 			}
 			else{
 				//jquery here to insert text saying it's currently out of stock
-				$('#Myo').append("<b><font size = \"10\"> Myo armband: currently unavailable </font></b>");
+				$('#myo').append("<b><font size = \"10\"> Myo armband: currently unavailable </font></b>");
 			}
 		},
 		error: function(error) {
@@ -71,12 +71,82 @@
 			console.log("unable to retrieve the data from Parse");
 		}
 	});
+
+  var query = new Parse.Query('HW');
+  query.equalTo("Name","Raspberry Pi");
+  query.find({
+    success: function(results) {
+      // results is an array of Parse.Object.
+      if(!results[0].get("Available")<=0){
+        //jquery here to insert link to checkout
+        $('#raspi').append("<b><font size = \"10\"><a onclick=\"checkout3()\" href = \"purchase/checkout.html\">RASPBERRY PI: $50</a></font></b>");
+      }
+      else{
+        //jquery here to insert text saying it's currently out of stock
+        $('#raspi').append("<b><font size = \"10\"> Raspberry Pi: currently unavailable </font></b>");
+      }
+    },
+    error: function(error) {
+      // error is an instance of Parse.Error.
+      console.log("unable to retrieve the data from Parse");
+    }
+  });
+
+  var query = new Parse.Query('HW');
+  query.equalTo("Name","Google Cardboard");
+  query.find({
+    success: function(results) {
+      // results is an array of Parse.Object.
+      if(!results[0].get("Available")<=0){
+        //jquery here to insert link to checkout
+        $('#google').append("<b><font size = \"10\"><a onclick=\"checkout4()\" href = \"purchase/checkout.html\">GOOGLE CARDBOARD: $35</a></font></b>");
+      }
+      else{
+        //jquery here to insert text saying it's currently out of stock
+        $('#google').append("<b><font size = \"10\"> Google Cardboard: currently unavailable </font></b>");
+      }
+    },
+    error: function(error) {
+      // error is an instance of Parse.Error.
+      console.log("unable to retrieve the data from Parse");
+    }
+  });
+
+  var query = new Parse.Query('HW');
+  query.equalTo("Name","Oculus Rift");
+  query.find({
+    success: function(results) {
+      // results is an array of Parse.Object.
+      if(!results[0].get("Available")<=0){
+        //jquery here to insert link to checkout
+        $('#oculus').append("<b><font size = \"10\"><a onclick=\"checkout5()\" href = \"purchase/checkout.html\">OCULUS RIFT: $70</a></font></b>");
+      }
+      else{
+        //jquery here to insert text saying it's currently out of stock
+        $('#oculus').append("<b><font size = \"10\"> Oculus Rift: currently unavailable </font></b>");
+      }
+    },
+    error: function(error) {
+      // error is an instance of Parse.Error.
+      console.log("unable to retrieve the data from Parse");
+    }
+  });
+
 		function checkout1(){
 			$.jStorage.set("item", "Pebble Watch");
 		}
 		function checkout2(){
 			$.jStorage.set("item", "Myo Armband");
 		}
+    function checkout3(){
+      $.jStorage.set("item", "Raspberry Pi");
+    }
+    function checkout4(){
+      $.jStorage.set("item", "Google Cardboard");
+    }
+    function checkout5(){
+      $.jStorage.set("item", "Oculus Rift");
+    }
 	
 	</script>
     <noscript>
@@ -125,20 +195,21 @@
       <br>
       <br>
 
-      <p id="Myo"></p>
+      <p id="myo"></p>
       <br>
       <br>
 
-      <p><b><font size = "10">OCULUS RIFT</font></b>
-        <br>
-        <br>
-        <font size = "6">COMING SOON!</font></p>
+      <p id="raspi"></p>
+      <br>
       <br>
 
-      <p><b><font size = "10">RASPBERRY PI</font></b>
-        <br>
-        <br>
-        <font size = "6">COMING SOON!</font></p>
+      <p id="google"></p>
+      <br>
+      <br>
+
+      <p id="oculus"></p>
+      <br>
+      <br>
 
     </center>
   </div>
