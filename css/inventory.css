@@ -5,15 +5,15 @@ body {
 }
 
 tr{
-color:#e44c65;
+color:#3FAE42;
 }
 p{
-color:#e44c65;
+color:#3FAE42;
 }
 tr.element{
 color:#ffffff;
 } 
 
 tr.element:hover,p.link{
-color: #e44c65;
+color: #3FAE42;
 }
