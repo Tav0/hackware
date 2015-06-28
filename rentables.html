@@ -159,22 +159,22 @@
     <!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
     <style>
-      a:link {
+      #thepage a:link {
         color: #3BB9FF;
         background-color: transparent;
         text-decoration: none;
       }
-      a:visited {
+      #thepage a:visited {
         color: #3BB9FF;
         background-color: transparent;
         text-decoration: none;
       }
-      a:hover {
+      #thepage a:hover {
         color: #3BB9FF !important; 
         background-color: transparent;
         text-decoration: underline;
       }
-      a:active {
+      #thepage a:active {
         color: #3BB9FF;
         background-color: transparent;
         text-decoration: underline;
@@ -183,7 +183,61 @@
 </head>
 
 <body>
-  <div>
+    
+      <!-- Header -->
+  <header id="header">
+    <nav id="nav"> 
+      <ul id="lis">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="faq.html">FAQ</a></li> 
+        <li><a href="inventory.html">Inventory</a></li>
+        <li><a href="rentables.html">Rentables</a></li>
+      </ul>
+    </nav>
+    <script>
+      $(document).ready(function(){
+        var currentUser = Parse.User.current();
+        if (currentUser) {
+          $("#lis").append("<li><a onclick=logout() href=\"\" id=\"logout\">Log out</a></li>");
+        } else {
+          $("#lis").append("<li><a href=\"\" id=\"logging\">Sign In</a></li>");
+        }
+      });
+      function logout(){
+        Parse.User.logOut();
+      };
+    </script>
+  </header>
+
+  <!-- Banner -->
+  <section id="banner">
+    <div class="content">
+      <!-- POP UP -->
+      <div id="popupBox">
+        <div class="popupBoxWrapper">
+          <form class="login-form">
+            <i class="fa fa-times" id="x"></i>
+            <h3><center>Sign In!</center></h3>
+            <div class="error" style="display:none"></div>
+            <div class="popuptext">
+              <!-- email -->
+              <input type="text" name="username" class="form-control 
+                loginEmail" id="emailid" required=""autocomplete="on"
+                placeholder="Enter Email">
+              <!-- pass -->
+              <input type="password" name="password" class="form-control
+                loginEmail" id="passid" required=""autocomplete="on" 
+                placeholder="Enter Password">
+            </div>
+            <input type="submit" class="button" id="button">
+            <p id="loginBox">Didn't sign up yet? No problem! Make an account 
+            <a href="register.html">here</a>!</p>
+          </form>
+        </div>
+      </div>
+      <!-- END POP UP -->
+    
+  <div id="thepage">
     <center>
       <p><font size = "6"><b>To rent something and hack, click on what you want!</b></font></p>
 
