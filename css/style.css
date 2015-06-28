@@ -1164,10 +1164,7 @@ input[type="button"]:active,
   color: #FFFFFF !important;
   background-color: #E44C4C !important; /*#E44C65*/ 
 }
-a#logo-link:hover,
-a#logo-link:active {
-  color: #E44C4C !important; /*#e44c65*/
-}
+
 a#signup:hover,
 a#signup:active {
   color: #000 !important;
@@ -1910,3 +1907,6 @@ body.landing #header {
                         #footer .copyright li a {
                           color: inherit;
                         }
+.sponspart:hover a{
+    color: #3FAE42 !important;
+}
