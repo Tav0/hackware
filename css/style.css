@@ -1716,7 +1716,7 @@ body.landing .dropotron.level-0 {
 
 #header nav {
   position: fixed;
-background-color: #1c1f26;
+  font-weight: bold;
   right: 1em;
   top: 0;
 }
