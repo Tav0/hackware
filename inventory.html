@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="images/hackware_icon.png" type="image/png"/>
-    <title>HackWare Inventory</title> 
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="images/hackware_icon.png" type="image/png"/>
+  <title>HackWare Inventory</title> 
 
 
-    <script src="js/parse-1.3.4.min.js"></script>
-    <script src="js/jquery-2.1.3.min.js"></script>
-    <script src="js/jquery.scrolly.min.js"></script>
-    <script src="js/jquery.dropotron.min.js"></script>
-    <script src="js/jquery.scrollex.min.js"></script>
-    <script src="js/skel.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/skel-layers.min.js"></script> 
-    <link rel="stylesheet" type="text/css" href="css/inventory.css" />
-    <link rel="stylesheet" href="css/skel.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/style-xlarge.css" />
-    <script src="js/jstorage.min.js"></script>
-  </head>
+  <script src="js/parse-1.3.4.min.js"></script>
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <script src="js/jquery.scrolly.min.js"></script>
+  <script src="js/jquery.dropotron.min.js"></script>
+  <script src="js/jquery.scrollex.min.js"></script>
+  <script src="js/skel.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/skel-layers.min.js"></script> 
+  <link rel="stylesheet" type="text/css" href="css/inventory.css" />
+  <link rel="stylesheet" href="css/skel.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style-xlarge.css" />
+  <script src="js/jstorage.min.js"></script>
+</head>
 
-  <body> 
-      
-        <!-- Header -->
+<body> 
+
+  <!-- Header -->
   <header id="header">
     <nav id="nav"> 
       <ul id="lis">
@@ -34,15 +34,16 @@
       </ul>
     </nav>
     <script>
-      $(document).ready(function(){
+      $(document).ready(function() {
         var currentUser = Parse.User.current();
         if (currentUser) {
           $("#lis").append("<li><a onclick=logout() href=\"\" id=\"logout\">Log out</a></li>");
-        } else {
+        }
+        else {
           $("#lis").append("<li><a href=\"\" id=\"logging\">Sign In</a></li>");
         }
       });
-      function logout(){
+      function logout() {
         Parse.User.logOut();
       };
     </script>
@@ -61,34 +62,35 @@
             <div class="popuptext">
               <!-- email -->
               <input type="text" name="username" class="form-control 
-                loginEmail" id="emailid" required=""autocomplete="on"
-                placeholder="Enter Email">
+              loginEmail" id="emailid" required=""autocomplete="on"
+              placeholder="Enter Email">
               <!-- pass -->
               <input type="password" name="password" class="form-control
-                loginEmail" id="passid" required=""autocomplete="on" 
-                placeholder="Enter Password">
+              loginEmail" id="passid" required=""autocomplete="on" 
+              placeholder="Enter Password">
             </div>
             <input type="submit" class="button" id="button">
             <p id="loginBox">Didn't sign up yet? No problem! Make an account 
-            <a href="register.html">here</a>!</p>
+              <a href="register.html">here</a>!
+            </p>
           </form>
         </div>
       </div>
       <!-- END POP UP -->
       <!-- END NAV BAR -->
-        
-        
-    <div id="container">
-      <h1>Inventory</h1>
-      <h4>Select the item you wish to rent.</h4>
-      <br>
-      <table id="hovertable"></table>
-      <script type="text/javascript" src="js/inventory_parse.js"></script>
-      <br>
-      <p>Item out of stock? Can't find what you're looking for?</p>
-      <p><u><a href="mailto:admin@hackware.io">Contact us!</a></u></p>
-    </div> 
 
-  </body>
+      <div id="container">
+        <h1>Inventory</h1>
+        <h4>Select the item you wish to rent.</h4>
+        <br>
+        <table id="hovertable"></table>
+        <script type="text/javascript" src="js/inventory_parse.js"></script>
+        <br>
+        <p>Item out of stock? Can't find what you're looking for?</p>
+        <p><u><a href="mailto:admin@hackware.io">Contact us!</a></u></p>
+      </div> 
+    </div>
+  </section>
 
+</body>
 </html>

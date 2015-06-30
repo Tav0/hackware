@@ -48,61 +48,61 @@
       </div>
 
     <script type="text/javascript">
-    $(document).ready(function(){
-      var count = 1;
-      //add a new input
-      $("#btn1").click(function(){
-        count++;
-        $("<div><input type='text' id='item"+ count + "'" +
-          " placeholder='Item# " + count + "'" +
-          "min='1' step='1'></div>").appendTo("#frm");
-      });
-      //submit items to parse
-      $("#btn2").click(function(){
-        Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", 
-            "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");
-
-        //for every item rented, submit to parse.
-        var rental = Parse.Object.extend("Rental");
-        var rental = new rental();
-        var temp = parseInt(document.getElementById('#item1'));
-
-        rental.save({
-          firstname: document.getElementById("#firstname").value,
-          lastname: document.getElementById("#lastname").value,
-          phone: document.getElementById('#phone').value,
-          item: document.getElementById("#item1").value,
-          returned: false,
-        }, {
-          success: function(gamescore) {
-            // the object was saved successfully.
-            //now changing the inventory item to unavailable
-            var hw = Parse.Object.extend("Hardware");
-            var query = new Parse.Query(hw);
-            query.equalTo("itemID",temp);//does not work
-            //query.equalTo("itemID",2);//DOES work... TODO <============================
-            query.first({
-              success: function(results) {
-                console.log("results "+results);
-                results.set("rented ", true);
-                results.save();
-                console.log("successful save");
-              },
-              error: function(error) {
-                alert("Error: " + error.code + " " + error.message);
-                console.log("error updating the Hardware db");
-              }
-            });
-
-          },
-          error: function(gamescore, error) {
-            // the save failed.
-            // error is a parse.error with an error code and message.
-            console.log("error. check parse");
-          }
+      $(document).ready(function(){
+        var count = 1;
+        //add a new input
+        $("#btn1").click(function(){
+          count++;
+          $("<div><input type='text' id='item"+ count + "'" +
+            " placeholder='Item# " + count + "'" +
+            "min='1' step='1'></div>").appendTo("#frm");
         });
-      })
-    });
+        //submit items to parse
+        $("#btn2").click(function(){
+          Parse.initialize("PRZCDqiKSpzjNuIGTEHj9jXKn6f1PRfAixB2nK2r", 
+              "GuD81fbE4prg1RdLLmJvhLdb8CBa21imyroGrMRk");
+
+          //for every item rented, submit to parse.
+          var rental = Parse.Object.extend("Rental");
+          var rental = new rental();
+          var temp = parseInt(document.getElementById('#item1'));
+
+          rental.save({
+            firstname: document.getElementById("#firstname").value,
+            lastname: document.getElementById("#lastname").value,
+            phone: document.getElementById('#phone').value,
+            item: document.getElementById("#item1").value,
+            returned: false,
+          }, {
+            success: function(gamescore) {
+              // the object was saved successfully.
+              //now changing the inventory item to unavailable
+              var hw = Parse.Object.extend("Hardware");
+              var query = new Parse.Query(hw);
+              query.equalTo("itemID",temp);//does not work
+              //query.equalTo("itemID",2);//DOES work... TODO <============================
+              query.first({
+                success: function(results) {
+                  console.log("results "+results);
+                  results.set("rented ", true);
+                  results.save();
+                  console.log("successful save");
+                },
+                error: function(error) {
+                  alert("Error: " + error.code + " " + error.message);
+                  console.log("error updating the Hardware db");
+                }
+              });
+
+            },
+            error: function(gamescore, error) {
+              // the save failed.
+              // error is a parse.error with an error code and message.
+              console.log("error. check parse");
+            }
+          });
+        })
+      });
     </script>
 </body>
 </html>

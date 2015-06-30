@@ -1211,7 +1211,7 @@ input[type="submit"].special,
 input[type="reset"].special,
 input[type="button"].special,
 .button.special {
-  background-color: #e44c65;
+  background-color: #e44c65; ???
   box-shadow: none;
   color: #ffffff !important;
 }
@@ -1858,7 +1858,7 @@ body.landing #header {
                         /* Footer */
 
                         #footer {
-                          background: #272833;
+                          background: #337AB7;
                           padding: 6em 0;
                           text-align: center;
                         }
