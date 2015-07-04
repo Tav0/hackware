@@ -1693,8 +1693,6 @@ body.landing .dropotron.level-0 {
 }
 
 #header {
-
-
   cursor: default;
   height: 3.5em;
   left: 0;
@@ -1715,7 +1713,7 @@ body.landing .dropotron.level-0 {
 }
 
 #header nav {
-  position: fixed;
+  position: absolute;
   font-weight: bold;
   right: 1em;
   top: 0;
@@ -1771,7 +1769,7 @@ body.landing #header {
 
 #banner {
   background-attachment: fixed;
-  background-color: #272833;
+  background-color: #ffffff;
   background-image: url("../images/banner.jpg");
   background-position: center center;
   background-size: cover;
@@ -1837,12 +1835,12 @@ body.landing #header {
 }
 
 #banner .content .image {
-  /* border-radius: 100%; */
-  /*display: inline-block;
+  border-radius: 100%; 
+  display: inline-block;
   height: 18em;
   margin-left: 3em;
   vertical-align: middle;
-  width: 18em;*/
+  width: 18em;
 }
 
 #banner .content .image img {
@@ -1907,6 +1905,7 @@ body.is-touch #banner {
 #footer .copyright li a {
   color: inherit;
 }
-.sponspart:hover a{
+
+.logos:hover a {
   color: #3FAE42 !important;
 }
