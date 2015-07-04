@@ -43,22 +43,24 @@ p#input {
   margin: 0 auto;
   margin-top: 2vh;
   margin-bottom: 2vh;
+  text-align: center;
 }
 
 
 #rent_button{
-
+  font-weight: bold;
   padding: 10px 20px !important;
   text-align: center !important;
-  box-shadow: inset 0 0 0 0 #E44C4C !important; /*rgb(228,76,101)*/
+  vertical-align: middle !important;
+  box-shadow: inset 0 0 0 0 #337AB7 !important; /*rgb(228,76,101)*/
   -webkit-transition: all ease 0.8s !important;
   -moz-transition: all ease 0.8s !important;
   transition: all ease 0.8s !important;
-
 }
 
 #rent_button:hover{
-  box-shadow: inset 250px 100px 0 0 #E44C4C !important; /*rgb(228, 76, 101)*/
+  /*box-shadow: inset 250px 100px 0 0 #337AB7 !important; /*rgb(228, 76, 101)*/
+  background: #337AB7;
 }
 
 p#loginBox{
@@ -276,7 +278,8 @@ a {
   -o-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
   -ms-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
   transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  color: #E44C4C; /*#e44c65*/
+  color: #3BB9FF; /*#e44c65*/
+  font-weight: bold;
   text-decoration: none;
 }
 
@@ -966,6 +969,7 @@ ul.actions {
   cursor: default;
   list-style: none;
   padding-left: 0;
+  padding-right: 0;
 }
 
 ul.actions li {
@@ -1130,7 +1134,7 @@ input[type="button"],
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
-  background-color: #3FAE42; /*#337AB7;*/
+  background-color: #337AB7; /*#337AB7;*/
 }
 
 input[type="submit"]:hover, input[type="submit"]:active,
@@ -1142,7 +1146,7 @@ input[type="button"]:active,
 .button:active {
   box-shadow: inset 0 0 0 1px #E44C4C; /*#e44c65;*/
   color: #FFFFFF !important;
-  background-color: #E44C4C !important; /*#E44C65*/ 
+  background-color: #3FAE42 !important; /*#E44C65*/ 
 }
 
 a#signup:hover,
@@ -1758,11 +1762,12 @@ body.landing #header {
 
 #banner .content {
   display: inline-block;
+  /*horizontal-align: middle;*/
   margin-right: 1%;
   max-width: 95%;
   padding: 6em;
   position: relative;
-  /*text-align: right;*/
+  text-align: middle;
   vertical-align: middle;
   width: 100%;
   z-index: 1;
@@ -1771,6 +1776,7 @@ body.landing #header {
 #banner .content header {
   display: inline-block;
   vertical-align: middle;
+  text-align: middle;
 }
 
 #banner .content header h2 {
@@ -1779,7 +1785,7 @@ body.landing #header {
 }
 
 #banner .content header p {
-  margin: 5em 0 0 0;
+  margin: 2em 0 0 0;
   top: 0;
 }
 
@@ -1805,7 +1811,7 @@ body.is-touch #banner {
 /* Footer */
 
 #footer {
-  background: #337AB7;
+  background: #337AB7; /*3BB9FF for brigher blue*/
   padding: 6em 0;
   text-align: center;
   font-weight: 600;
