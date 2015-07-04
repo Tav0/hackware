@@ -1770,7 +1770,7 @@ body.landing #header {
 #banner {
   background-attachment: fixed;
   background-color: #ffffff;
-  background-image: url("../images/banner.jpg");
+
   background-position: center center;
   background-size: cover;
   /* box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25); */
@@ -1793,11 +1793,8 @@ body.landing #header {
 }
 
 #banner:after {
-  background-image: -moz-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");;
-  background-image: -webkit-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");;
-  background-image: -o-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");;
-  background-image: -ms-linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");;
-  background-image: linear-gradient(top, rgba(23, 24, 32, 0.95), rgba(23, 24, 32, 0.95)), url("images/overlay.png");;
+background-color: rgba(28,29,38,1);   
+    
   content: '';
   display: block;
   height: 100%;
