@@ -528,7 +528,7 @@ header.major {
 }
 
 header.major:after {
-  background: #E44C4C; /*#e44c65*/
+  background: #3FAE42;
   content: '';
   display: inline-block;
   height: 0.2em;
@@ -1811,7 +1811,7 @@ body.is-touch #banner {
 /* Footer */
 
 #footer {
-  background: #3BB9FF; /*3BB9FF for brighter blue; 337AB7 for darker blue*/
+  background: #3FAE42; /*3BB9FF for brighter blue; 337AB7 for darker blue*/
   padding: 6em 0;
   text-align: center;
   font-weight: 600;
