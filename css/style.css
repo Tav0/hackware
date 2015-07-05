@@ -1134,7 +1134,7 @@ input[type="button"],
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
-  background-color: #337AB7; /*#337AB7;*/
+  background-color: #3BB9FF; /*#337AB7;*/
 }
 
 input[type="submit"]:hover, input[type="submit"]:active,
@@ -1811,7 +1811,7 @@ body.is-touch #banner {
 /* Footer */
 
 #footer {
-  background: #337AB7; /*3BB9FF for brigher blue*/
+  background: #3BB9FF; /*3BB9FF for brighter blue; 337AB7 for darker blue*/
   padding: 6em 0;
   text-align: center;
   font-weight: 600;
