@@ -528,7 +528,7 @@ header.major {
 }
 
 header.major:after {
-  background: #3FAE42;
+  background: #3BB9FF;
   content: '';
   display: inline-block;
   height: 0.2em;
