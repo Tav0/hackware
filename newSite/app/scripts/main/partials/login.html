@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <p>Welcome to ICX Media.  Don't have an account?  <a ui-sref="auth.register">Register</a></p>
+            <p id="loginErrMsg" ng-show="errMsg != ''" class="auth-msg">{{errMsg}}</p>
+
+            <form class="form-horizontal" name="loginForm" ng-submit="login()">
+                <!-- add object to have two attributes that are email and pw -->
+                <div class="form-group">
+                    <label for="loginEmail" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                    <input type="email" class="form-control" id="loginEmail"
+                        ng-model="auth.email" placeholder="Email" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="loginPassword"
+                            ng-model="auth.password" placeholder="Password" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            <label>
+                            <input type="checkbox"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+		  <div class="col-sm-offset-2 btn-group">
+                      <button type="submit" class="btn btn-default"
+			      ng-disabled="loginForm.$invalid">Sign in
+		      </button>
+                      <button id="googleAuthBtn" type="button" class=" btn btn-default"
+			      ng-click="auth('google');"><span class="social social-google-plus"> </span> Google</button>
+		      <button id="facebookAuthBtn" type="button" class="btn btn-default"
+			      ng-click="auth('facebook');"><span class="social social-facebook"></span> Facebook</button>
+		    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,155 @@
+<div class="product home dash-default">
+
+	<div class="quad1 quad-group triangle" clip-path clipid="top-tri">
+		<div class="content" clip-path clipid="top-tri">
+			<div class="inner-content">
+
+				<div class="score-container">
+					<div class="score-elements">
+						<div class="my-peers-title chart-title">
+							Peers
+						</div>
+						<div class="my-peers">
+							<h1 class="chart-title">99</h1>
+						</div>
+						<div class="my-goals-title chart-title">
+							Goals
+						</div>
+						<div class="my-goals">
+							<h1 class="chart-title">65</h1>
+						</div>
+					</div>
+					<am-chart id="radar-score"
+							 class="score-display"
+				data-mainclass="score-display"
+		options="mid_score"
+	add-filter></am-chart>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="quad3">
+		<div class="content">
+			<div class="inner-content">
+
+				<div class="engagements-container" ng-class="{'top':serial && !refreshLegend}">
+					<div class="dash-desc">
+						<table class="legend-container">
+							<tr>
+								<td colspan="2">
+									<h5 view-title>Performance Dashboard</h5>
+									<div class="chart-channels long">
+										<span click-display chart="bottomGraph" graph="allGraphs" class="glyphicons glyphicons-group" uib-popover="All" popover-trigger="mouseenter" popover-placement="top" name="all" id="icon_all"> </span>
+										<span click-display chart="bottomGraph" graph="allGraphs" class="glyphicons glyphicons-group" uib-popover="Production" popover-trigger="mouseenter" popover-placement="top" name="production" id="icon_production"> </span>
+										<span click-display chart="bottomGraph" graph="socialGraphs" class="glyphicons glyphicons-eye-open" uib-popover="Discovery" popover-trigger="mouseenter" popover-placement="top" name="discovery" id="icon_discovery"> </span>
+										<span click-display chart="bottomGraph" graph="allGraphs" class="glyphicons glyphicons-heat" uib-popover="Distribution" id="top_chart_3" popover-trigger="mouseenter" popover-placement="top" name="distribution" id="icon_distribution"> </span>
+										<span click-display chart="bottomGraph" graph="monetizeGraphs" class="glyphicons glyphicons-coins" uib-popover="Monetization" id="top_chart_4" popover-trigger="mouseenter"  popover-placement="top" name="monetization" id="icon_monetization"> </span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="col-sm-5 legend-details">
+									<h5>Dashboard Interval (Days)</h5>
+									<div class="custom-icon selected">
+										<div class="center-item text">30</div>
+									</div>
+									<div class="custom-icon">
+										<div class="center-item text">
+											60
+										</div>
+									</div>
+									<div class="custom-icon">
+										<div class="center-item text">
+											90
+										</div>
+									</div>
+								</td>
+								<td class="col-sm-7 legend-details">
+									<h5>Engagement Legend</h5>
+									<ul class="legend">
+										<li ng-repeat="m in bottomGraphLegend"
+							hover="true"
+			 click-display
+			 chart="bottomGraph"
+		graph="allGraphs"
+	individual="{{m.id}}"  style="border-top:3px solid {{m.color}}">
+											{{m.display}}
+										</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" ng-class="{'lengthen': serial || gauge}">
+									<div class="summary-container">
+										<div class="row summary-serial" id="summary-serial" ng-mouseenter="resetGraphTimeout()" ng-class="{'summary-uncollapse':serial && !refreshLegend}">
+											<div class="col-sm-12">
+												<h3 flicker id="summary-serial-title">{{serialTitle}}</h3>
+											</div>
+											<div class="col-sm-6">
+												<div class="row" ng-repeat="(key, value) in list0">
+													<div class="col-sm-8 text-left">
+														<p ng-class="{'heavy':highlightChosen == key}">{{key}}</p>
+													</div>
+													<div class="col-sm-4 text-center">
+														<p ng-class="{'heavy':highlightChosen == key}">{{value}}</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-6">
+												<div class="row" ng-repeat="(key, value) in list1">
+													<div class="col-sm-8 text-left">
+														<p ng-class="{'heavy':highlightChosen == key}">{{key}}</p>
+													</div>
+													<div class="col-sm-4 text-center">
+														<p ng-class="{'heavy':highlightChosen == key}">{{value}}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="summary-container">
+										<div class="row summary-gauge" id="summary-gauge" ng-mouseenter="resetGraphTimeout()" ng-class="{'summary-uncollapse':gauge && !refreshLegend}">
+											<div class="col-sm-12">
+												<h3 flicker id="summary-gauge-title">{{title}}</h3>
+											</div>
+											<div class="col-sm-4 col-sm-offset-4 text-center">
+												<h5>My Peers</h5>
+											</div>
+											<div class="col-sm-4 text-center">
+												<h5>My Goals</h5>
+											</div>
+											<div ng-repeat="m in radar">
+												<div class="col-sm-4">
+													<p ng-class="{'heavy':m.type == currentType}">{{m.type}}</p>
+												</div>
+												<div class="col-sm-4 text-center">
+													<p ng-class="{'heavy': currValueField == 'peers' && currPval == m.peers }">{{m.peers}}</p>
+												</div>
+												<div class="col-sm-4 text-center">
+													<p ng-class="{'heavy': currValueField == 'goals' && currGval == m.goals }">{{m.goals}}</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+				<div class="dash-discovery dash-bottom">
+					<am-chart id="dash-discovery-chart"
+							 class="ad-engagement"
+				data-mainclass="ad-engagement"
+		add-filter
+		options="bottomGraph" listener="displayChartInfo">
+					</am-chart>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
